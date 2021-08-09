@@ -8,6 +8,9 @@ export const App = () => (
       <StyledIllustration />
     </Header>
     <main></main>
+    <Footer>
+      created by <Username>hacker-witch</Username> - devChallenges.io
+    </Footer>
   </Wrapper>
 );
 
@@ -39,4 +42,17 @@ const Heading = styled.h1`
   font-size: 2.25rem;
   font-weight: 700;
   color: #fff;
+`;
+
+const Footer = styled.footer`
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #F2F2F2;
+`;
+
+const Username = styled.span`
+  font-weight: 700;
+  text-decoration: underline;
 `;
