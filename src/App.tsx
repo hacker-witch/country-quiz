@@ -14,7 +14,11 @@ const Container = styled.div`
 `;
 
 const Heading = styled.h1`
-  font-size: 2.25rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: #fff;
+  
+  @media (min-width: 29rem) {
+    font-size: 2.25rem;
+  }
 `;
