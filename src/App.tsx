@@ -8,15 +8,21 @@ export const App = () => (
         <Heading>COUNTRY QUIZ</Heading>
         <StyledIllustration />
       </Header>
+      
       <main></main>
     </Container>
+    
     <Footer>
       created by <Username>hacker-witch</Username> - devChallenges.io
     </Footer>
   </Wrapper>
 );
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+`;
 
 const Container = styled.div`
   margin: 0 auto;
@@ -49,6 +55,7 @@ const Heading = styled.h1`
 `;
 
 const Footer = styled.footer`
+  margin-top: auto;
   padding: 1.8125rem 0;
   text-align: center;
   font-family: 'Montserrat', sans-serif;
