@@ -1,9 +1,11 @@
 import styled from 'styled-components';
+import { ReactComponent as Illustration } from 'img/header-illustration.svg';
 
 export const App = () => (
   <header>
     <Container>
       <Heading>COUNTRY QUIZ</Heading>
+      <Illustration />
     </Container>
   </header>
 );
