@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createGlobalStyle } from 'styled-components';
 import { App } from './App';
+import background from 'img/background.png';
 import reportWebVitals from './reportWebVitals';
 
 const GlobalStyle = createGlobalStyle`
@@ -12,8 +13,12 @@ const GlobalStyle = createGlobalStyle`
   }
   
   body {
+    min-height: 100vh;
     font-family: "Poppins", sans-serif;
     font-size: 1rem;
+    background-image: url(${background});
+    background-size: cover;
+    background-position: center;
   }
 `;
 
