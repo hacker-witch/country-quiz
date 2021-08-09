@@ -7,6 +7,7 @@ export const App = () => (
       <Heading>COUNTRY QUIZ</Heading>
       <StyledIllustration />
     </Header>
+    <main></main>
   </Wrapper>
 );
 
