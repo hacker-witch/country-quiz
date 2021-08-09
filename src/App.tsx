@@ -5,7 +5,7 @@ export const App = () => (
   <Header>
     <Container>
       <Heading>COUNTRY QUIZ</Heading>
-      <Illustration />
+      <StyledIllustration />
     </Container>
   </Header>
 );
@@ -14,6 +14,14 @@ const Container = styled.div`
   margin: 0 auto;
   padding: 0 1rem;
   max-width: 29rem;
+`;
+
+const StyledIllustration = styled(Illustration)`
+  display: none;
+  
+  @media (min-width: 29rem) {
+    display: block;
+  }
 `;
 
 const Header = styled.header`
