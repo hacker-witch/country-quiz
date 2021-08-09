@@ -10,6 +10,7 @@ export const App = () => (
 
 const Container = styled.div`
   margin: 0 auto;
+  padding: 0 1rem;
   max-width: 29rem;
 `;
 
