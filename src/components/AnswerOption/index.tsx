@@ -8,7 +8,7 @@ interface AnswerOptionProps {
 
 export const AnswerOption = ({ id, letter, value }: AnswerOptionProps) => (
   <Wrapper>
-    <Input type="radio" id={id} name="answerOption" value={value} onChange={e => console.log(e)} />
+    <Input type="radio" id={id} name="answerOption" value={value} />
     <Label htmlFor={id}>
       <Letter>{letter}</Letter>
       <Value>{value}</Value>
