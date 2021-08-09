@@ -10,6 +10,11 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
   }
+  
+  body {
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+  }
 `;
 
 ReactDOM.render(
