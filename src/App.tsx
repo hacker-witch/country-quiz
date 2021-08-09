@@ -33,11 +33,9 @@ const Header = styled.header`
 `;
 
 const Heading = styled.h1`
-  font-size: 1.5rem;
+  flex: 1;
+  text-align: center;
+  font-size: 2.25rem;
   font-weight: 700;
   color: #fff;
-  
-  @media (min-width: 31rem) {
-    font-size: 2.25rem;
-  }
 `;
