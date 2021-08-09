@@ -19,7 +19,7 @@ const Container = styled.div`
 const StyledIllustration = styled(Illustration)`
   display: none;
   
-  @media (min-width: 29rem) {
+  @media (min-width: 31rem) {
     display: block;
   }
 `;
@@ -35,7 +35,7 @@ const Heading = styled.h1`
   font-weight: 700;
   color: #fff;
   
-  @media (min-width: 29rem) {
+  @media (min-width: 31rem) {
     font-size: 2.25rem;
   }
 `;
