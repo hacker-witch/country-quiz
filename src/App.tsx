@@ -2,9 +2,16 @@ import styled from 'styled-components';
 
 export const App = () => (
   <header>
-    <Heading>COUNTRY QUIZ</Heading>
+    <Container>
+      <Heading>COUNTRY QUIZ</Heading>
+    </Container>
   </header>
 );
+
+const Container = styled.div`
+  margin: 0 auto;
+  max-width: 29rem;
+`;
 
 const Heading = styled.h1`
   font-size: 2.25rem;
