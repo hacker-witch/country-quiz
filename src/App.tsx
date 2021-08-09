@@ -2,18 +2,24 @@ import styled from 'styled-components';
 import { ReactComponent as Illustration } from 'img/header-illustration.svg';
 
 export const App = () => (
-  <header>
+  <Header>
     <Container>
       <Heading>COUNTRY QUIZ</Heading>
       <Illustration />
     </Container>
-  </header>
+  </Header>
 );
 
 const Container = styled.div`
   margin: 0 auto;
   padding: 0 1rem;
   max-width: 29rem;
+`;
+
+const Header = styled.header`
+  > ${Container} {
+    display: flex;
+  }
 `;
 
 const Heading = styled.h1`
