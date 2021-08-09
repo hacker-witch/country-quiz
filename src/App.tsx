@@ -3,18 +3,22 @@ import { ReactComponent as Illustration } from 'img/header-illustration.svg';
 
 export const App = () => (
   <Wrapper>
-    <Header>
-      <Heading>COUNTRY QUIZ</Heading>
-      <StyledIllustration />
-    </Header>
-    <main></main>
+    <Container>
+      <Header>
+        <Heading>COUNTRY QUIZ</Heading>
+        <StyledIllustration />
+      </Header>
+      <main></main>
+    </Container>
     <Footer>
       created by <Username>hacker-witch</Username> - devChallenges.io
     </Footer>
   </Wrapper>
 );
 
-const Wrapper = styled.div`
+const Wrapper = styled.div``;
+
+const Container = styled.div`
   margin: 0 auto;
   padding: 0 1rem;
   max-width: 29rem;
@@ -45,6 +49,7 @@ const Heading = styled.h1`
 `;
 
 const Footer = styled.footer`
+  padding: 1.8125rem 0;
   text-align: center;
   font-family: 'Montserrat', sans-serif;
   font-size: 0.875rem;
