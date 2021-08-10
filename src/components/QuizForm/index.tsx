@@ -7,7 +7,7 @@ interface QuizFormProps {
 export const QuizForm = ({ question }: QuizFormProps) => (
   <Form>
     <Fieldset>
-      <legend>{question}</legend>
+      <Legend>{question}</Legend>
     </Fieldset>
   </Form>
 )
@@ -20,4 +20,10 @@ const Form = styled.form`
 
 const Fieldset = styled.fieldset`
   border: none;
+`;
+
+const Legend = styled.legend`
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2F527B;
 `;
