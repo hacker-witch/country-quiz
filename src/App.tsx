@@ -55,6 +55,8 @@ const StyledIllustration = styled(Illustration)`
 `;
 
 const Header = styled.header`
+  position: relative;
+  top: 42px;
   display: flex;
   align-items: start;
 `;
