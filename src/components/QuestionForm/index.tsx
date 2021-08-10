@@ -1,5 +1,6 @@
 import { useState, FormEvent } from 'react';
 import styled from 'styled-components';
+import { Question } from '../Question';
 import { AnswerOption } from '../AnswerOption';
 
 const letters =['a', 'b', 'c', 'd'];
@@ -54,12 +55,6 @@ const AnswerOptionsGroup = styled.div`
 
 const Fieldset = styled.fieldset`
   border: none;
-`;
-
-const Question = styled.legend`
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #2F527B;
 `;
 
 const Button = styled.button`
