@@ -56,16 +56,17 @@ const StyledIllustration = styled(Illustration)`
 `;
 
 const Header = styled.header`
-  position: relative;
-  top: 42px;
   display: flex;
   align-items: start;
+  
+  @media (min-width: 31rem) {
+    position: relative;
+    top: 42px;
+  }
 `;
 
 const Heading = styled.h1`
   flex: 1;
-  position: relative;
-  top: 0.625rem;
   text-align: center;
   font-size: 2.25rem;
   font-weight: 700;
@@ -73,6 +74,8 @@ const Heading = styled.h1`
   
   @media (min-width: 31rem) {
     text-align: left;
+    position: relative;
+    top: 0.625rem;
   }
 `;
 
