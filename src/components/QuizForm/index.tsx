@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, FormEvent } from 'react';
 import styled from 'styled-components';
 import { AnswerOption } from '../AnswerOption';
 
@@ -12,8 +12,12 @@ interface QuizFormProps {
 export const QuizForm = ({ question, answerOptions }: QuizFormProps) => {
   const [checkedAnswer, setCheckedAnswer] = useState(answerOptions[0]);
   
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  }
+  
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
       <Fieldset>
         <Legend>{question}</Legend>
         <AnswerOptionsGroup>
