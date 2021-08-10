@@ -67,5 +67,13 @@ const Button = styled.button`
   border: none;
   border-radius: 0.75rem;
   background: #F9A826;
-  box-shadow: 0px 2px 4px rgba(252, 168, 47, 0.4);
+  
+  :hover {
+    cursor: pointer;
+  }
+  
+  :focus {
+    outline: none;
+    box-shadow: 0px 2px 4px rgba(252, 168, 47, 0.4);
+  }
 `;
