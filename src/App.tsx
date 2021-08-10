@@ -17,7 +17,10 @@ export const App = () => (
       </Header>
       
       <main>
-        <QuizForm question={data.question} />
+        <QuizForm
+          question={data.question}
+          answerOptions={data.answerOptions}
+        />
       </main>
     </Container>
     
