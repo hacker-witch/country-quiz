@@ -1,15 +1,14 @@
 import styled from 'styled-components';
 
 interface AnswerOptionProps {
-  id: string;
   letter: string;
   value: string;
 }
 
-export const AnswerOption = ({ id, letter, value }: AnswerOptionProps) => (
+export const AnswerOption = ({ letter, value }: AnswerOptionProps) => (
   <Wrapper>
-    <Input type="radio" id={id} name="answerOption" value={value} />
-    <Label htmlFor={id}>
+    <Input type="radio" id={letter} name="answerOption" value={value} />
+    <Label htmlFor={letter}>
       <Letter>{letter}</Letter>
       <Value>{value}</Value>
     </Label>
