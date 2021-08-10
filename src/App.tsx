@@ -56,10 +56,13 @@ const StyledIllustration = styled(Illustration)`
 
 const Header = styled.header`
   display: flex;
+  align-items: start;
 `;
 
 const Heading = styled.h1`
   flex: 1;
+  position: relative;
+  top: 0.625rem;
   text-align: center;
   font-size: 2.25rem;
   font-weight: 700;
