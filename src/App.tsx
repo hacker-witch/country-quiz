@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { QuizForm } from 'components';
 import { ReactComponent as Illustration } from 'img/header-illustration.svg';
 
 export const App = () => (
@@ -9,7 +10,9 @@ export const App = () => (
         <StyledIllustration />
       </Header>
       
-      <main></main>
+      <main>
+        <QuizForm />
+      </main>
     </Container>
     
     <Footer>
