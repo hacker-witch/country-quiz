@@ -5,15 +5,18 @@ interface AnswerOptionProps {
   value: string;
 }
 
-export const AnswerOption = ({ letter, value }: AnswerOptionProps) => (
-  <Wrapper>
-    <Input type="radio" id={letter} name="answerOption" value={value} />
-    <Label htmlFor={letter}>
-      <Letter>{letter}</Letter>
-      <Value>{value}</Value>
-    </Label>
-  </Wrapper>
-);
+export const AnswerOption = ({ letter, value }: AnswerOptionProps) => {
+  const id = `answer-option-${letter}`;
+  return (
+    <Wrapper>
+      <Input type="radio" id={id} name="answerOption" value={value} />
+      <Label htmlFor={id}>
+        <Letter>{letter}</Letter>
+        <Value>{value}</Value>
+      </Label>
+    </Wrapper>
+  )
+};
 
 const Wrapper = styled.div`
   display: flex;
