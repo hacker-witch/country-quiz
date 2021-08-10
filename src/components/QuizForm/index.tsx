@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import { AnswerOption } from '../AnswerOption';
 
@@ -8,18 +9,28 @@ interface QuizFormProps {
   answerOptions: string[];
 }
 
-export const QuizForm = ({ question, answerOptions }: QuizFormProps) => (
-  <Form>
-    <Fieldset>
-      <Legend>{question}</Legend>
-      <AnswerOptionsGroup>
-        {answerOptions.map((option, index) => (
-          <AnswerOption key={index} letter={letters[index]} value={option} />
-        ))}
-      </AnswerOptionsGroup>
-    </Fieldset>
-  </Form>
-)
+export const QuizForm = ({ question, answerOptions }: QuizFormProps) => {
+  const [checkedAnswer, setCheckedAnswer] = useState<string | null>(null);
+  
+  return (
+    <Form>
+      <Fieldset>
+        <Legend>{question}</Legend>
+        <AnswerOptionsGroup>
+          {answerOptions.map((option, index) => (
+            <AnswerOption
+              key={index}
+              letter={letters[index]}
+              value={option}
+              isChecked={option === checkedAnswer}
+              onChange={_ => setCheckedAnswer(option)}
+            />
+          ))}
+        </AnswerOptionsGroup>
+      </Fieldset>
+    </Form>
+  )
+};
 
 const Form = styled.form`
   padding: 4.25rem 2rem;

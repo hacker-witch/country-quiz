@@ -1,15 +1,25 @@
+import { FormEvent } from 'react';
 import styled from 'styled-components';
 
 interface AnswerOptionProps {
   letter: string;
   value: string;
+  isChecked: boolean;
+  onChange: (e: FormEvent<HTMLInputElement>) => void
 }
 
-export const AnswerOption = ({ letter, value }: AnswerOptionProps) => {
+export const AnswerOption = ({ letter, value, isChecked, onChange }: AnswerOptionProps) => {
   const id = `answer-option-${letter}`;
   return (
     <Wrapper>
-      <Input type="radio" id={id} name="answerOption" value={value} />
+      <Input
+        type="radio"
+        id={id}
+        name="answerOption"
+        value={value}
+        checked={isChecked}
+        onChange={onChange}
+      />
       <Label htmlFor={id}>
         <Letter>{letter}</Letter>
         <Value>{value}</Value>
