@@ -22,7 +22,7 @@ export const QuestionForm = ({ question, answerOptions }: QuestionFormProps) => 
   return (
     <Form onSubmit={handleSubmit}>
       <Fieldset>
-        <Question>{question}</Question>
+        <Question as='legend'>{question}</Question>
         <AnswerOptionsGroup>
           {answerOptions.map((option, index) => (
             <AnswerOption
