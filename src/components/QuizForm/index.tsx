@@ -39,7 +39,7 @@ export const QuizForm = ({ question, answerOptions }: QuizFormProps) => {
 };
 
 const Form = styled.form`
-  padding: 4.25rem 2rem;
+  padding: 4.25rem 2rem 2rem 2rem;
   background: #fff;
   border-radius: 1.5rem;
 `;
