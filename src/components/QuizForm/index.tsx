@@ -27,8 +27,9 @@ export const QuizForm = ({ question, answerOptions }: QuizFormProps) => {
             />
           ))}
         </AnswerOptionsGroup>
-        <Button type="submit">Submit</Button>
       </Fieldset>
+      
+      <Button type="submit">Submit</Button>
     </Form>
   )
 };
