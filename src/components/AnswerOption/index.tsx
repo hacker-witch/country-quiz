@@ -58,7 +58,9 @@ const Label = styled.label`
   border: 0.125rem solid rgba(96, 102, 208, 0.7);
   border-radius: 0.75rem;
   
-  :hover, ${Input}:focus + & {
+  :hover,
+  ${Input}:focus + &,
+  ${Input}:checked + & {
     cursor: pointer;
     background: #F9A826;
     color: #fff;
