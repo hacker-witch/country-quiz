@@ -66,14 +66,15 @@ const Button = styled.button`
   color: #fff;
   border: none;
   border-radius: 0.75rem;
-  background: #F9A826;
+  background: #bbb;
   
   :hover {
     cursor: pointer;
   }
   
-  :focus {
+  :focus, :hover {
     outline: none;
     box-shadow: 0px 2px 4px rgba(252, 168, 47, 0.4);
+    background: #F9A826;
   }
 `;
