@@ -21,7 +21,7 @@ export const QuestionForm = ({ question, answerOptions }: QuestionFormProps) => 
   return (
     <Form onSubmit={handleSubmit}>
       <Fieldset>
-        <Legend>{question}</Legend>
+        <Question>{question}</Question>
         <AnswerOptionsGroup>
           {answerOptions.map((option, index) => (
             <AnswerOption
@@ -56,7 +56,7 @@ const Fieldset = styled.fieldset`
   border: none;
 `;
 
-const Legend = styled.legend`
+const Question = styled.legend`
   font-size: 1.5rem;
   font-weight: 700;
   color: #2F527B;
