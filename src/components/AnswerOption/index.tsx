@@ -59,11 +59,14 @@ const Label = styled.label`
   border-radius: 0.75rem;
   
   :hover,
-  ${Input}:focus + &,
   ${Input}:checked + & {
     cursor: pointer;
     background: #F9A826;
     color: #fff;
     border-color: #F9A826;
+  }
+  
+  ${Input}:focus + & {
+    box-shadow: 0 0 0 4px rgba(249, 168, 38, 0.4);
   }
 `;
