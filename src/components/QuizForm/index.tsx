@@ -11,11 +11,11 @@ interface QuizFormProps {
 
 export const QuizForm = ({ question, answerOptions }: QuizFormProps) => {
   const [checkedAnswer, setCheckedAnswer] = useState(answerOptions[0]);
-  const [wasSubmitted, setWasSubmitted] = useState(false);
+  const [wasAnswered, setWasAnswered] = useState(false);
   
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setWasSubmitted(true);
+    setWasAnswered(true);
   }
   
   return (
