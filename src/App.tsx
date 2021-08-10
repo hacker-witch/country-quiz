@@ -2,6 +2,12 @@ import styled from 'styled-components';
 import { QuizForm } from 'components';
 import { ReactComponent as Illustration } from 'img/header-illustration.svg';
 
+const data = {
+  question: 'Kuala Lumpur is the capital of',
+  answerOptions: ['vietnam', 'malaysia', 'sweden', 'austria'],
+  correctAnswer: 'malaysia'
+}
+
 export const App = () => (
   <Wrapper>
     <Container>
