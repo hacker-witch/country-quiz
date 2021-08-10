@@ -67,6 +67,6 @@ const Label = styled.label`
   }
   
   ${Input}:focus + & {
-    box-shadow: 0 0 0 4px rgba(249, 168, 38, 0.4);
+    box-shadow: 0 0 0 0.25rem rgba(249, 168, 38, 0.4);
   }
 `;
