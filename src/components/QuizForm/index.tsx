@@ -27,6 +27,7 @@ export const QuizForm = ({ question, answerOptions }: QuizFormProps) => {
             />
           ))}
         </AnswerOptionsGroup>
+        <Button type="submit">Submit</Button>
       </Fieldset>
     </Form>
   )
@@ -52,4 +53,19 @@ const Legend = styled.legend`
   font-size: 1.5rem;
   font-weight: 700;
   color: #2F527B;
+`;
+
+const Button = styled.button`
+  display: block;
+  margin-top: 1.5rem;
+  margin-left: auto;
+  padding: 1rem 2.25rem;
+  font-family: inherit;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #fff;
+  border: none;
+  border-radius: 0.75rem;
+  background: #F9A826;
+  box-shadow: 0px 2px 4px rgba(252, 168, 47, 0.4);
 `;
