@@ -1,1 +1,1 @@
-export * from './QuizForm';
+export * from './QuestionForm';

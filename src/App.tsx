@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { QuizForm } from 'components';
+import { QuestionForm } from 'components';
 import { ReactComponent as Illustration } from 'img/header-illustration.svg';
 
 const data = {
@@ -17,7 +17,7 @@ export const App = () => (
       </Header>
       
       <main>
-        <QuizForm
+        <QuestionForm
           question={data.question}
           answerOptions={data.answerOptions}
         />

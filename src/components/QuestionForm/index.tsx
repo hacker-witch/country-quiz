@@ -4,12 +4,12 @@ import { AnswerOption } from '../AnswerOption';
 
 const letters =['a', 'b', 'c', 'd'];
 
-interface QuizFormProps {
+interface QuestionFormProps {
   question: string;
   answerOptions: string[];
 }
 
-export const QuizForm = ({ question, answerOptions }: QuizFormProps) => {
+export const QuestionForm = ({ question, answerOptions }: QuestionFormProps) => {
   const [checkedAnswer, setCheckedAnswer] = useState(answerOptions[0]);
   const [wasAnswered, setWasAnswered] = useState(false);
   
