@@ -48,14 +48,7 @@ const Label = styled.label`
   border: 0.125rem solid rgba(96, 102, 208, 0.7);
   border-radius: 0.75rem;
   
-  :hover {
-    cursor: pointer;
-    background: #F9A826;
-    color: #fff;
-    border-color: #F9A826;
-  }
-  
-  ${Input}:focus + & {
+  :hover, ${Input}:focus + & {
     cursor: pointer;
     background: #F9A826;
     color: #fff;
