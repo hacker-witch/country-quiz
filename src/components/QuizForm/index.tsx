@@ -10,7 +10,7 @@ interface QuizFormProps {
 }
 
 export const QuizForm = ({ question, answerOptions }: QuizFormProps) => {
-  const [checkedAnswer, setCheckedAnswer] = useState<string | null>(null);
+  const [checkedAnswer, setCheckedAnswer] = useState(answerOptions[0]);
   
   return (
     <Form>
