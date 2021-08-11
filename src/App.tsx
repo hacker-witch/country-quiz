@@ -10,7 +10,7 @@ const data = {
 }
 
 export const App = () => {
-  const [wasAnswered, setWasAnswered] = useState(false);
+  const [questionWasAnswered, setQuestionWasAnswered] = useState(false);
   
   return (
     <Wrapper>
