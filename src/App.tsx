@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import { QuestionForm } from 'components';
 import { ReactComponent as Illustration } from 'img/header-illustration.svg';
@@ -8,27 +9,31 @@ const data = {
   correctAnswer: 'malaysia'
 }
 
-export const App = () => (
-  <Wrapper>
-    <Container>
-      <Header>
-        <Heading>COUNTRY QUIZ</Heading>
-        <StyledIllustration />
-      </Header>
+export const App = () => {
+  const [wasAnswered, setWasAnswered] = useState(false);
+  
+  return (
+    <Wrapper>
+      <Container>
+        <Header>
+          <Heading>COUNTRY QUIZ</Heading>
+          <StyledIllustration />
+        </Header>
+        
+        <main>
+          <QuestionForm
+            question={data.question}
+            answerOptions={data.answerOptions}
+          />
+        </main>
+      </Container>
       
-      <main>
-        <QuestionForm
-          question={data.question}
-          answerOptions={data.answerOptions}
-        />
-      </main>
-    </Container>
-    
-    <Footer>
-      created by <Username>hacker-witch</Username> - devChallenges.io
-    </Footer>
-  </Wrapper>
-);
+      <Footer>
+        created by <Username>hacker-witch</Username> - devChallenges.io
+      </Footer>
+    </Wrapper>
+  )
+};
 
 const Wrapper = styled.div`
   min-height: 100vh;

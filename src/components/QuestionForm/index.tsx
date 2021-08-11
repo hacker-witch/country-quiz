@@ -12,11 +12,9 @@ interface QuestionFormProps {
 
 export const QuestionForm = ({ question, answerOptions }: QuestionFormProps) => {
   const [checkedAnswer, setCheckedAnswer] = useState(answerOptions[0]);
-  const [wasAnswered, setWasAnswered] = useState(false);
   
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setWasAnswered(true);
   }
   
   return (
