@@ -13,6 +13,18 @@ const baseStyles = `
   border-radius: 0.75rem;
 `;
 
+interface AnswerOptionItemProps {
+  letter: string;
+  value: string;
+}
+
+export const AnswerOptionItem = ({ letter, value }: AnswerOptionItemProps) => (
+  <Wrapper as="li">
+    <Letter>{letter}</Letter>
+    <Value>{value}</Value>
+  </Wrapper>
+);
+
 interface AnswerOptionFieldProps {
   letter: string;
   value: string;
