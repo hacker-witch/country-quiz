@@ -1,17 +1,18 @@
-import { useState } from 'react';
-import styled from 'styled-components';
-import { QuestionForm } from 'components';
-import { ReactComponent as Illustration } from 'img/header-illustration.svg';
+import { useState } from "react";
+import styled from "styled-components";
+import { QuestionForm } from "components";
+import { ReactComponent as Illustration } from "img/header-illustration.svg";
+import { QuestionResults } from "components";
 
 const data = {
-  question: 'Kuala Lumpur is the capital of',
-  answerOptions: ['vietnam', 'malaysia', 'sweden', 'austria'],
-  correctAnswer: 'malaysia'
-}
+  question: "Kuala Lumpur is the capital of",
+  answerOptions: ["vietnam", "malaysia", "sweden", "austria"],
+  correctAnswer: "malaysia",
+};
 
 export const App = () => {
   const [questionWasAnswered, setQuestionWasAnswered] = useState(false);
-  
+
   return (
     <Wrapper>
       <Container>
@@ -19,20 +20,24 @@ export const App = () => {
           <Heading>COUNTRY QUIZ</Heading>
           <StyledIllustration />
         </Header>
-        
+
         <main>
-          <QuestionForm
-            question={data.question}
-            answerOptions={data.answerOptions}
-          />
+          {questionWasAnswered ? (
+            <QuestionResults />
+          ) : (
+            <QuestionForm
+              question={data.question}
+              answerOptions={data.answerOptions}
+            />
+          )}
         </main>
       </Container>
-      
+
       <Footer>
         created by <Username>hacker-witch</Username> - devChallenges.io
       </Footer>
     </Wrapper>
-  )
+  );
 };
 
 const Wrapper = styled.div`
@@ -46,7 +51,7 @@ const Container = styled.div`
   padding: 0 1rem;
   width: 100%;
   max-width: 29rem;
-  
+
   @media (min-width: 31rem) {
     padding: 0;
   }
@@ -54,7 +59,7 @@ const Container = styled.div`
 
 const StyledIllustration = styled(Illustration)`
   display: none;
-  
+
   @media (min-width: 31rem) {
     display: block;
   }
@@ -63,7 +68,7 @@ const StyledIllustration = styled(Illustration)`
 const Header = styled.header`
   display: flex;
   align-items: start;
-  
+
   @media (min-width: 31rem) {
     position: relative;
     top: 42px;
@@ -75,8 +80,8 @@ const Heading = styled.h1`
   text-align: center;
   font-size: 2.25rem;
   font-weight: 700;
-  color: #F2F2F2;
-  
+  color: #f2f2f2;
+
   @media (min-width: 31rem) {
     text-align: left;
     position: relative;
@@ -88,10 +93,10 @@ const Footer = styled.footer`
   margin-top: auto;
   padding: 1.8125rem 0;
   text-align: center;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 0.875rem;
   font-weight: 500;
-  color: #F2F2F2;
+  color: #f2f2f2;
 `;
 
 const Username = styled.span`
