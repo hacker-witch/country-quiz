@@ -23,7 +23,7 @@ export const App = () => {
 
         <main>
           {questionWasAnswered ? (
-            <QuestionResults />
+            <QuestionResults question={data.question} />
           ) : (
             <QuestionForm
               question={data.question}

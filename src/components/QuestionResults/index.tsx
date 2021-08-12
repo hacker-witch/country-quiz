@@ -1,3 +1,12 @@
-import { QuizBox } from "components/QuizBox";
+import { QuizBox } from "../QuizBox";
+import { Question } from "../Question";
 
-export const QuestionResults = () => <QuizBox />;
+interface QuestionResultsProps {
+  question: string;
+}
+
+export const QuestionResults = ({ question }: QuestionResultsProps) => (
+  <QuizBox>
+    <Question>{question}</Question>
+  </QuizBox>
+);
