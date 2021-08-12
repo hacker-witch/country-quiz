@@ -1,6 +1,18 @@
 import { FormEvent } from "react";
 import styled from "styled-components";
 
+const baseStyles = `
+  height: 3.5rem;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: rgba(96, 102, 208, 0.8);
+  border: 0.125rem solid rgba(96, 102, 208, 0.7);
+  border-radius: 0.75rem;
+`;
+
 interface AnswerOptionProps {
   letter: string;
   value: string;
@@ -53,15 +65,7 @@ const Input = styled.input`
 
 const Label = styled.label`
   flex: 1;
-  height: 3.5rem;
-  padding: 0 1rem;
-  display: flex;
-  align-items: center;
-  font-size: 1.125rem;
-  font-weight: 500;
-  color: rgba(96, 102, 208, 0.8);
-  border: 0.125rem solid rgba(96, 102, 208, 0.7);
-  border-radius: 0.75rem;
+  ${baseStyles};
 
   :hover,
   ${Input}:checked + & {
