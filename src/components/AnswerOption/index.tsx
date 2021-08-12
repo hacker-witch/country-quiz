@@ -64,8 +64,8 @@ const Input = styled.input`
 `;
 
 const Label = styled.label`
-  flex: 1;
   ${baseStyles};
+  flex: 1;
 
   :hover,
   ${Input}:checked + & {
