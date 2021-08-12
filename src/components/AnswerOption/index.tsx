@@ -13,26 +13,26 @@ const baseStyles = `
   border-radius: 0.75rem;
 `;
 
-interface AnswerOptionProps {
+interface AnswerOptionFieldProps {
   letter: string;
   value: string;
   isChecked: boolean;
   onChange: (e: FormEvent<HTMLInputElement>) => void;
 }
 
-export const AnswerOption = ({
+export const AnswerOptionField = ({
   letter,
   value,
   isChecked,
   onChange,
-}: AnswerOptionProps) => {
+}: AnswerOptionFieldProps) => {
   const id = `answer-option-${letter}`;
   return (
     <Wrapper>
       <Input
         type="radio"
         id={id}
-        name="answerOption"
+        name="answerOptionField"
         value={value}
         checked={isChecked}
         onChange={onChange}

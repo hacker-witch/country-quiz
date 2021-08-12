@@ -1,7 +1,7 @@
 import { useState, FormEvent } from "react";
 import styled from "styled-components";
 import { Question } from "../Question";
-import { AnswerOption } from "../AnswerOption";
+import { AnswerOptionField } from "../AnswerOption";
 import { QuizBox } from "../QuizBox";
 import { Button } from "../Button";
 
@@ -28,7 +28,7 @@ export const QuestionForm = ({
         <Question as="legend">{question}</Question>
         <AnswerOptionsGroup>
           {answerOptions.map((option, index) => (
-            <AnswerOption
+            <AnswerOptionField
               key={index}
               letter={letters[index]}
               value={option}
