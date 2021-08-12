@@ -1,9 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { createGlobalStyle } from 'styled-components';
-import { App } from './App';
-import background from 'img/background.png';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import { createGlobalStyle } from "styled-components";
+import { App } from "./App";
+import background from "img/background.png";
+import reportWebVitals from "./reportWebVitals";
 
 const GlobalStyle = createGlobalStyle`
   *, *:before, *:after {
@@ -27,7 +27,7 @@ ReactDOM.render(
     <GlobalStyle />
     <App />
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

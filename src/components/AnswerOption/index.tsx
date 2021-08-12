@@ -1,14 +1,19 @@
-import { FormEvent } from 'react';
-import styled from 'styled-components';
+import { FormEvent } from "react";
+import styled from "styled-components";
 
 interface AnswerOptionProps {
   letter: string;
   value: string;
   isChecked: boolean;
-  onChange: (e: FormEvent<HTMLInputElement>) => void
+  onChange: (e: FormEvent<HTMLInputElement>) => void;
 }
 
-export const AnswerOption = ({ letter, value, isChecked, onChange }: AnswerOptionProps) => {
+export const AnswerOption = ({
+  letter,
+  value,
+  isChecked,
+  onChange,
+}: AnswerOptionProps) => {
   const id = `answer-option-${letter}`;
   return (
     <Wrapper>
@@ -25,7 +30,7 @@ export const AnswerOption = ({ letter, value, isChecked, onChange }: AnswerOptio
         <Value>{value}</Value>
       </Label>
     </Wrapper>
-  )
+  );
 };
 
 const Wrapper = styled.div`
@@ -36,7 +41,7 @@ const Letter = styled.span`
   margin-right: 2.875rem;
   font-size: 1.5rem;
   text-transform: uppercase;
-`
+`;
 
 const Value = styled.span`
   text-transform: capitalize;
@@ -57,15 +62,15 @@ const Label = styled.label`
   color: rgba(96, 102, 208, 0.8);
   border: 0.125rem solid rgba(96, 102, 208, 0.7);
   border-radius: 0.75rem;
-  
+
   :hover,
   ${Input}:checked + & {
     cursor: pointer;
-    background: #F9A826;
+    background: #f9a826;
     color: #fff;
-    border-color: #F9A826;
+    border-color: #f9a826;
   }
-  
+
   ${Input}:focus + & {
     box-shadow: 0 0 0 0.25rem rgba(249, 168, 38, 0.4);
   }
