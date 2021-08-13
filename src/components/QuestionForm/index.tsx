@@ -2,6 +2,7 @@ import { useState, FormEvent } from "react";
 import styled from "styled-components";
 import { Question } from "../Question";
 import { AnswerOptionField } from "../AnswerOption";
+import { AnswerOptionsGroup } from "../AnswerOptionsGroup";
 import { QuizBox } from "../QuizBox";
 import { Button } from "../Button";
 
@@ -43,12 +44,6 @@ export const QuestionForm = ({
     </QuizBox>
   );
 };
-
-const AnswerOptionsGroup = styled.div`
-  margin-top: 2rem;
-  display: grid;
-  gap: 1.5625rem;
-`;
 
 const Fieldset = styled.fieldset`
   border: none;
