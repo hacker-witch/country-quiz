@@ -11,16 +11,19 @@ const letters = ["a", "b", "c", "d"];
 interface QuestionFormProps {
   question: string;
   answerOptions: string[];
+  onSubmit: (answer: string) => void;
 }
 
 export const QuestionForm = ({
   question,
   answerOptions,
+  onSubmit,
 }: QuestionFormProps) => {
   const [checkedAnswer, setCheckedAnswer] = useState(answerOptions[0]);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    onSubmit(checkedAnswer);
   };
 
   return (

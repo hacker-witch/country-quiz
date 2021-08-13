@@ -31,6 +31,7 @@ export const App = () => {
             <QuestionForm
               question={data.question}
               answerOptions={data.answerOptions}
+              onSubmit={(answer) => setChosenAnswer(answer)}
             />
           )}
         </main>
