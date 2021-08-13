@@ -13,17 +13,25 @@ const baseStyles = `
   border-radius: 0.75rem;
 `;
 
+const Wrapper = styled.div`
+  display: flex;
+`;
+
 interface AnswerOptionItemProps {
   letter: string;
   value: string;
 }
 
 export const AnswerOptionItem = ({ letter, value }: AnswerOptionItemProps) => (
-  <Wrapper as="li">
+  <ItemWrapper as="li">
     <Letter>{letter}</Letter>
     <Value>{value}</Value>
-  </Wrapper>
+  </ItemWrapper>
 );
+
+const ItemWrapper = styled(Wrapper)`
+  ${baseStyles};
+`;
 
 interface AnswerOptionFieldProps {
   letter: string;
@@ -56,10 +64,6 @@ export const AnswerOptionField = ({
     </Wrapper>
   );
 };
-
-const Wrapper = styled.div`
-  display: flex;
-`;
 
 const Letter = styled.span`
   margin-right: 2.875rem;
