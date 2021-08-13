@@ -11,7 +11,7 @@ const data = {
 };
 
 export const App = () => {
-  const [questionWasAnswered, setQuestionWasAnswered] = useState(false);
+  const [chosenAnswer, setChosenAnswer] = useState<string | null>(null);
 
   return (
     <Wrapper>
@@ -22,7 +22,7 @@ export const App = () => {
         </Header>
 
         <main>
-          {questionWasAnswered ? (
+          {chosenAnswer ? (
             <QuestionResults
               question={data.question}
               answerOptions={data.answerOptions}
