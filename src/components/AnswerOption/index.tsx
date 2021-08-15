@@ -1,7 +1,7 @@
 import { FormEvent } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-const baseStyles = `
+const AnswerOption = styled.div`
   height: 3.5rem;
   padding: 0 1rem;
   display: flex;
@@ -13,25 +13,17 @@ const baseStyles = `
   border-radius: 0.75rem;
 `;
 
-const Wrapper = styled.div`
-  display: flex;
-`;
-
 interface AnswerOptionItemProps {
   letter: string;
   value: string;
 }
 
 export const AnswerOptionItem = ({ letter, value }: AnswerOptionItemProps) => (
-  <ItemWrapper as="li">
+  <AnswerOption as="li">
     <Letter>{letter}</Letter>
     <Value>{value}</Value>
-  </ItemWrapper>
+  </AnswerOption>
 );
-
-const ItemWrapper = styled(Wrapper)`
-  ${baseStyles};
-`;
 
 interface AnswerOptionFieldProps {
   letter: string;
@@ -57,10 +49,10 @@ export const AnswerOptionField = ({
         checked={isChecked}
         onChange={onChange}
       />
-      <Label htmlFor={id}>
+      <AnswerOption as="label" htmlFor={id}>
         <Letter>{letter}</Letter>
         <Value>{value}</Value>
-      </Label>
+      </AnswerOption>
     </Wrapper>
   );
 };
@@ -79,19 +71,29 @@ const Input = styled.input`
   appearance: none;
 `;
 
-const Label = styled.label`
-  ${baseStyles};
-  flex: 1;
+const hoverStyles = css`
+  cursor: pointer;
+  background: #f9a826;
+  color: #fff;
+  border-color: #f9a826;
+`;
 
-  :hover,
-  ${Input}:checked + & {
-    cursor: pointer;
-    background: #f9a826;
-    color: #fff;
-    border-color: #f9a826;
+const Wrapper = styled.div`
+  display: flex;
+
+  ${AnswerOption} {
+    flex: 1;
   }
 
-  ${Input}:focus + & {
+  ${AnswerOption}:hover {
+    ${hoverStyles}
+  }
+
+  ${Input}:checked + ${AnswerOption} {
+    ${hoverStyles}
+  }
+
+  ${Input}:focus + ${AnswerOption} {
     box-shadow: 0 0 0 0.25rem rgba(249, 168, 38, 0.4);
   }
 `;
