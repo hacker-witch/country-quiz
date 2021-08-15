@@ -1,8 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { QuestionForm } from "components";
+import { QuestionForm, QuestionResults } from "components";
 import { ReactComponent as Illustration } from "img/header-illustration.svg";
-import { QuestionResults } from "components";
 
 const data = {
   question: "Kuala Lumpur is the capital of",
