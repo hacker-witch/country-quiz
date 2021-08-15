@@ -2,7 +2,7 @@ import { QuizBox } from "../QuizBox";
 import { Question } from "../Question";
 import { Button } from "../Button";
 import { AnswerOptionsGroup } from "../AnswerOptionsGroup";
-import { AnswerOptionItem } from "../AnswerOption";
+import { AnswerOption, Letter, Value } from "../AnswerOption";
 
 const letters = ["a", "b", "c", "d"];
 
@@ -26,4 +26,16 @@ export const QuestionResults = ({
 
     <Button type="button">Next</Button>
   </QuizBox>
+);
+
+interface AnswerOptionItemProps {
+  letter: string;
+  value: string;
+}
+
+const AnswerOptionItem = ({ letter, value }: AnswerOptionItemProps) => (
+  <AnswerOption as="li">
+    <Letter>{letter}</Letter>
+    <Value>{value}</Value>
+  </AnswerOption>
 );

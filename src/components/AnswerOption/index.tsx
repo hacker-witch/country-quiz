@@ -1,7 +1,7 @@
 import { FormEvent } from "react";
 import styled, { css } from "styled-components";
 
-const AnswerOption = styled.div`
+export const AnswerOption = styled.div`
   height: 3.5rem;
   padding: 0 1rem;
   display: flex;
@@ -12,18 +12,6 @@ const AnswerOption = styled.div`
   border: 0.125rem solid rgba(96, 102, 208, 0.7);
   border-radius: 0.75rem;
 `;
-
-interface AnswerOptionItemProps {
-  letter: string;
-  value: string;
-}
-
-export const AnswerOptionItem = ({ letter, value }: AnswerOptionItemProps) => (
-  <AnswerOption as="li">
-    <Letter>{letter}</Letter>
-    <Value>{value}</Value>
-  </AnswerOption>
-);
 
 interface AnswerOptionFieldProps {
   letter: string;
@@ -57,13 +45,13 @@ export const AnswerOptionField = ({
   );
 };
 
-const Letter = styled.span`
+export const Letter = styled.span`
   margin-right: 2.875rem;
   font-size: 1.5rem;
   text-transform: uppercase;
 `;
 
-const Value = styled.span`
+export const Value = styled.span`
   text-transform: capitalize;
 `;
 
