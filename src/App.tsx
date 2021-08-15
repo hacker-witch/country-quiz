@@ -72,10 +72,12 @@ const StyledIllustration = styled(Illustration)`
 const Header = styled.header`
   display: flex;
   align-items: start;
+  padding: 2rem 0;
 
   @media (min-width: 31rem) {
     position: relative;
     top: 42px;
+    padding: 0;
   }
 `;
 
