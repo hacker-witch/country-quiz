@@ -11,7 +11,8 @@ export const Button = styled.button`
   color: #fff;
   border: none;
   border-radius: 0.75rem;
-  background: #bbb;
+  background: #f9a826;
+  box-shadow: 0 0.125rem 0.25rem rgba(252, 168, 47, 0.4);
 
   :hover {
     cursor: pointer;
@@ -20,7 +21,6 @@ export const Button = styled.button`
   :focus,
   :hover {
     outline: none;
-    box-shadow: 0 0.125rem 0.25rem rgba(252, 168, 47, 0.4);
-    background: #f9a826;
+    background: #e89715;
   }
 `;
