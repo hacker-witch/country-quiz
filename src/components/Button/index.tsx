@@ -14,13 +14,17 @@ export const Button = styled.button`
   background: #f9a826;
   box-shadow: 0 0.125rem 0.25rem rgba(252, 168, 47, 0.4);
 
+  :focus,
+  :hover {
+    background: #e89715;
+  }
+
   :hover {
     cursor: pointer;
   }
 
-  :focus,
-  :hover {
+  :focus {
     outline: none;
-    background: #e89715;
+    box-shadow: 0 0 0 0.25rem rgba(249, 168, 38, 0.4);
   }
 `;
