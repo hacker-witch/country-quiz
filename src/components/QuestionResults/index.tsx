@@ -9,6 +9,7 @@ const letters = ["a", "b", "c", "d"];
 interface QuestionResultsProps {
   question: string;
   answerOptions: string[];
+  chosenAnswer: string;
 }
 
 export const QuestionResults = ({

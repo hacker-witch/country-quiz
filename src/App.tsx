@@ -26,6 +26,7 @@ export const App = () => {
             <QuestionResults
               question={data.question}
               answerOptions={data.answerOptions}
+              chosenAnswer={chosenAnswer}
             />
           ) : (
             <QuestionForm
