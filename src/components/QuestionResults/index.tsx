@@ -5,6 +5,7 @@ import { Question } from "../Question";
 import { Button } from "../Button";
 import { AnswerOptionsGroup } from "../AnswerOptionsGroup";
 import { AnswerOption, Letter, Value } from "../AnswerOption";
+import { ReactComponent as CheckCircleRoundedIcon } from "img/check-circle-rounded-icon.svg";
 
 const letters = ["a", "b", "c", "d"];
 
@@ -77,10 +78,18 @@ interface AnswerResultProps {
 
 const AnswerResult = ({ isCorrect, children }: AnswerResultProps) =>
   isCorrect ? (
-    <CorrectAnswer as="li">{children}</CorrectAnswer>
+    <CorrectAnswer as="li">
+      {children}
+      <CorrectIcon />
+    </CorrectAnswer>
   ) : (
     <WronglyChosenAnswer as="li">{children}</WronglyChosenAnswer>
   );
+
+const CorrectIcon = styled(CheckCircleRoundedIcon)`
+  fill: #fff;
+  margin-left: auto;
+`;
 
 const CorrectAnswer = styled(AnswerOption)`
   color: #fff;
