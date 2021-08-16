@@ -1,6 +1,5 @@
 import { useState } from "react";
-import styled from "styled-components";
-import { QuestionForm, QuestionResults, QuizFooter } from "components";
+import { QuestionForm, QuestionResults } from "components";
 
 const data = {
   question: "Kuala Lumpur is the capital of",
@@ -15,57 +14,24 @@ export const App = () => {
   switch (quizStatus) {
     case "ANSWERING":
       return (
-        <Wrapper>
-          <Container>
-            <main>
-              <QuestionForm
-                question={data.question}
-                answerOptions={data.answerOptions}
-                onSubmit={(answer) => setChosenAnswer(answer)}
-              />
-            </main>
-          </Container>
-
-          <QuizFooter />
-        </Wrapper>
+        <QuestionForm
+          question={data.question}
+          answerOptions={data.answerOptions}
+          onSubmit={(answer) => setChosenAnswer(answer)}
+        />
       );
 
     case "VIEWING_RESULTS":
       return (
-        <Wrapper>
-          <Container>
-            <main>
-              <QuestionResults
-                question={data.question}
-                answerOptions={data.answerOptions}
-                chosenAnswer={chosenAnswer!}
-                correctAnswer={data.correctAnswer}
-              />
-            </main>
-          </Container>
-
-          <QuizFooter />
-        </Wrapper>
+        <QuestionResults
+          question={data.question}
+          answerOptions={data.answerOptions}
+          chosenAnswer={chosenAnswer!}
+          correctAnswer={data.correctAnswer}
+        />
       );
 
     default:
       return null;
   }
 };
-
-const Wrapper = styled.div`
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-`;
-
-const Container = styled.div`
-  margin: 0 auto;
-  padding: 0 1rem;
-  width: 100%;
-  max-width: 29rem;
-
-  @media (min-width: 31rem) {
-    padding: 0;
-  }
-`;

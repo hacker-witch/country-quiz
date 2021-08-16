@@ -1,6 +1,9 @@
 import { ReactNode } from "react";
 import styled from "styled-components";
+import { Page } from "../Page";
+import { Container } from "../Container";
 import { QuizHeader } from "../QuizHeader";
+import { QuizFooter } from "../QuizFooter";
 import { QuizBox } from "../QuizBox";
 import { Question } from "../Question";
 import { Button } from "../Button";
@@ -24,26 +27,31 @@ export const QuestionResults = ({
   chosenAnswer,
   correctAnswer,
 }: QuestionResultsProps) => (
-  <>
-    <QuizHeader />
-    <QuizBox>
-      <Question>{question}</Question>
+  <Page>
+    <Container>
+      <QuizHeader />
 
-      <AnswerOptionsGroup as="ol">
-        {answerOptions.map((answer, index) => (
-          <AnswerOptionItem
-            key={index}
-            letter={letters[index]}
-            value={answer}
-            wasChosen={answer === chosenAnswer}
-            isCorrect={answer === correctAnswer}
-          />
-        ))}
-      </AnswerOptionsGroup>
+      <QuizBox>
+        <Question>{question}</Question>
 
-      <Button type="button">Next</Button>
-    </QuizBox>
-  </>
+        <AnswerOptionsGroup as="ol">
+          {answerOptions.map((answer, index) => (
+            <AnswerOptionItem
+              key={index}
+              letter={letters[index]}
+              value={answer}
+              wasChosen={answer === chosenAnswer}
+              isCorrect={answer === correctAnswer}
+            />
+          ))}
+        </AnswerOptionsGroup>
+
+        <Button type="button">Next</Button>
+      </QuizBox>
+    </Container>
+
+    <QuizFooter />
+  </Page>
 );
 
 interface AnswerOptionItemProps {
