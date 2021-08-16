@@ -6,6 +6,7 @@ import { Button } from "../Button";
 import { AnswerOptionsGroup } from "../AnswerOptionsGroup";
 import { AnswerOption, Letter, Value } from "../AnswerOption";
 import { ReactComponent as CheckCircleRoundedIcon } from "img/check-circle-rounded-icon.svg";
+import { ReactComponent as HighlightOffRoundedIcon } from "img/highlight-off-rounded-icon.svg";
 
 const letters = ["a", "b", "c", "d"];
 
@@ -83,10 +84,18 @@ const AnswerResult = ({ isCorrect, children }: AnswerResultProps) =>
       <CorrectIcon />
     </CorrectAnswer>
   ) : (
-    <WronglyChosenAnswer as="li">{children}</WronglyChosenAnswer>
+    <WronglyChosenAnswer as="li">
+      {children}
+      <WrongIcon />
+    </WronglyChosenAnswer>
   );
 
 const CorrectIcon = styled(CheckCircleRoundedIcon)`
+  fill: #fff;
+  margin-left: auto;
+`;
+
+const WrongIcon = styled(HighlightOffRoundedIcon)`
   fill: #fff;
   margin-left: auto;
 `;
