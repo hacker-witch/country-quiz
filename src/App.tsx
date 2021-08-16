@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { QuestionForm, QuestionResults } from "components";
+import { QuestionForm, QuestionResults, QuizFooter } from "components";
 
 const data = {
   question: "Kuala Lumpur is the capital of",
@@ -26,9 +26,7 @@ export const App = () => {
             </main>
           </Container>
 
-          <Footer>
-            created by <Username>hacker-witch</Username> - devChallenges.io
-          </Footer>
+          <QuizFooter />
         </Wrapper>
       );
 
@@ -46,9 +44,7 @@ export const App = () => {
             </main>
           </Container>
 
-          <Footer>
-            created by <Username>hacker-witch</Username> - devChallenges.io
-          </Footer>
+          <QuizFooter />
         </Wrapper>
       );
 
@@ -72,19 +68,4 @@ const Container = styled.div`
   @media (min-width: 31rem) {
     padding: 0;
   }
-`;
-
-const Footer = styled.footer`
-  margin-top: auto;
-  padding: 1.8125rem 0;
-  text-align: center;
-  font-family: "Montserrat", sans-serif;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: #f2f2f2;
-`;
-
-const Username = styled.span`
-  font-weight: 700;
-  text-decoration: underline;
 `;
