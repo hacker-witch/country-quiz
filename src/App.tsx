@@ -10,6 +10,7 @@ const data = {
 
 export const App = () => {
   const [chosenAnswer, setChosenAnswer] = useState<string | null>(null);
+  const [quizStatus, setQuizStatus] = useState("ANSWERING");
 
   return (
     <Wrapper>
