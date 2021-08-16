@@ -11,13 +11,18 @@ export const App = () => {
   const [chosenAnswer, setChosenAnswer] = useState<string | null>(null);
   const [quizStatus, setQuizStatus] = useState("ANSWERING");
 
+  const handleQuizSubmit = (answer: string) => {
+    setChosenAnswer(answer);
+    setQuizStatus("VIEWING_QUESTION_RESULTS");
+  };
+
   switch (quizStatus) {
     case "ANSWERING":
       return (
         <Quiz
           question={data.question}
           answerOptions={data.answerOptions}
-          onSubmit={(answer) => setChosenAnswer(answer)}
+          onSubmit={handleQuizSubmit}
         />
       );
 
