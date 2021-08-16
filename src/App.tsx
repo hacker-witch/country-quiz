@@ -12,32 +12,49 @@ export const App = () => {
   const [chosenAnswer, setChosenAnswer] = useState<string | null>(null);
   const [quizStatus, setQuizStatus] = useState("ANSWERING");
 
-  return (
-    <Wrapper>
-      <Container>
-        <main>
-          {chosenAnswer ? (
-            <QuestionResults
-              question={data.question}
-              answerOptions={data.answerOptions}
-              chosenAnswer={chosenAnswer}
-              correctAnswer={data.correctAnswer}
-            />
-          ) : (
-            <QuestionForm
-              question={data.question}
-              answerOptions={data.answerOptions}
-              onSubmit={(answer) => setChosenAnswer(answer)}
-            />
-          )}
-        </main>
-      </Container>
+  switch (quizStatus) {
+    case "ANSWERING":
+      return (
+        <Wrapper>
+          <Container>
+            <main>
+              <QuestionForm
+                question={data.question}
+                answerOptions={data.answerOptions}
+                onSubmit={(answer) => setChosenAnswer(answer)}
+              />
+            </main>
+          </Container>
 
-      <Footer>
-        created by <Username>hacker-witch</Username> - devChallenges.io
-      </Footer>
-    </Wrapper>
-  );
+          <Footer>
+            created by <Username>hacker-witch</Username> - devChallenges.io
+          </Footer>
+        </Wrapper>
+      );
+
+    case "VIEWING_RESULTS":
+      return (
+        <Wrapper>
+          <Container>
+            <main>
+              <QuestionResults
+                question={data.question}
+                answerOptions={data.answerOptions}
+                chosenAnswer={chosenAnswer!}
+                correctAnswer={data.correctAnswer}
+              />
+            </main>
+          </Container>
+
+          <Footer>
+            created by <Username>hacker-witch</Username> - devChallenges.io
+          </Footer>
+        </Wrapper>
+      );
+
+    default:
+      return null;
+  }
 };
 
 const Wrapper = styled.div`
