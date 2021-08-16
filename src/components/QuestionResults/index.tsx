@@ -8,18 +8,18 @@ import { AnswerOption, Letter, Value } from "../AnswerOption";
 
 const letters = ["a", "b", "c", "d"];
 
-const correctAnswer = "malaysia";
-
 interface QuestionResultsProps {
   question: string;
   answerOptions: string[];
   chosenAnswer: string;
+  correctAnswer: string;
 }
 
 export const QuestionResults = ({
   question,
   answerOptions,
   chosenAnswer,
+  correctAnswer,
 }: QuestionResultsProps) => (
   <QuizBox>
     <Question>{question}</Question>
