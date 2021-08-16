@@ -21,7 +21,7 @@ export const App = () => {
         />
       );
 
-    case "VIEWING_RESULTS":
+    case "VIEWING_QUESTION_RESULTS":
       return (
         <QuestionResults
           question={data.question}
