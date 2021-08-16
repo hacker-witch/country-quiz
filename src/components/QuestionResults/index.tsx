@@ -1,12 +1,12 @@
 import { ReactNode } from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { QuizBox } from "../QuizBox";
 import { Question } from "../Question";
 import { Button } from "../Button";
 import { AnswerOptionsGroup } from "../AnswerOptionsGroup";
 import { AnswerOption, Letter, Value } from "../AnswerOption";
-import { ReactComponent as CheckCircleRoundedIcon } from "img/check-circle-rounded-icon.svg";
-import { ReactComponent as HighlightOffRoundedIcon } from "img/highlight-off-rounded-icon.svg";
+import correctIcon from "img/check-circle-rounded-icon.svg";
+import wrongIcon from "img/highlight-off-rounded-icon.svg";
 
 const letters = ["a", "b", "c", "d"];
 
@@ -81,26 +81,18 @@ const AnswerResult = ({ isCorrect, children }: AnswerResultProps) =>
   isCorrect ? (
     <CorrectAnswer as="li">
       {children}
-      <CorrectIcon />
+      <Icon src={correctIcon} alt="This answer is correct!" />
     </CorrectAnswer>
   ) : (
     <WronglyChosenAnswer as="li">
       {children}
-      <WrongIcon />
+      <Icon src={wrongIcon} alt="You've chosen the wrong answer!" />
     </WronglyChosenAnswer>
   );
 
-const iconStyles = css`
+const Icon = styled.img`
   fill: #fff;
   margin-left: auto;
-`;
-
-const CorrectIcon = styled(CheckCircleRoundedIcon)`
-  ${iconStyles}
-`;
-
-const WrongIcon = styled(HighlightOffRoundedIcon)`
-  ${iconStyles}
 `;
 
 const CorrectAnswer = styled(AnswerOption)`
