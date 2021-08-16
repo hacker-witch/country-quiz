@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { QuizBox } from "../QuizBox";
 import { Question } from "../Question";
 import { Button } from "../Button";
@@ -90,14 +90,17 @@ const AnswerResult = ({ isCorrect, children }: AnswerResultProps) =>
     </WronglyChosenAnswer>
   );
 
-const CorrectIcon = styled(CheckCircleRoundedIcon)`
+const iconStyles = css`
   fill: #fff;
   margin-left: auto;
 `;
 
+const CorrectIcon = styled(CheckCircleRoundedIcon)`
+  ${iconStyles}
+`;
+
 const WrongIcon = styled(HighlightOffRoundedIcon)`
-  fill: #fff;
-  margin-left: auto;
+  ${iconStyles}
 `;
 
 const CorrectAnswer = styled(AnswerOption)`
