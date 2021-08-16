@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { QuestionForm, QuestionResults, QuizHeader } from "components";
+import { QuestionForm, QuestionResults } from "components";
 
 const data = {
   question: "Kuala Lumpur is the capital of",
@@ -14,8 +14,6 @@ export const App = () => {
   return (
     <Wrapper>
       <Container>
-        <QuizHeader />
-
         <main>
           {chosenAnswer ? (
             <QuestionResults

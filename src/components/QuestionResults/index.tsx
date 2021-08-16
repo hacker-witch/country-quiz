@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import styled from "styled-components";
+import { QuizHeader } from "../QuizHeader";
 import { QuizBox } from "../QuizBox";
 import { Question } from "../Question";
 import { Button } from "../Button";
@@ -23,23 +24,26 @@ export const QuestionResults = ({
   chosenAnswer,
   correctAnswer,
 }: QuestionResultsProps) => (
-  <QuizBox>
-    <Question>{question}</Question>
+  <>
+    <QuizHeader />
+    <QuizBox>
+      <Question>{question}</Question>
 
-    <AnswerOptionsGroup as="ol">
-      {answerOptions.map((answer, index) => (
-        <AnswerOptionItem
-          key={index}
-          letter={letters[index]}
-          value={answer}
-          wasChosen={answer === chosenAnswer}
-          isCorrect={answer === correctAnswer}
-        />
-      ))}
-    </AnswerOptionsGroup>
+      <AnswerOptionsGroup as="ol">
+        {answerOptions.map((answer, index) => (
+          <AnswerOptionItem
+            key={index}
+            letter={letters[index]}
+            value={answer}
+            wasChosen={answer === chosenAnswer}
+            isCorrect={answer === correctAnswer}
+          />
+        ))}
+      </AnswerOptionsGroup>
 
-    <Button type="button">Next</Button>
-  </QuizBox>
+      <Button type="button">Next</Button>
+    </QuizBox>
+  </>
 );
 
 interface AnswerOptionItemProps {

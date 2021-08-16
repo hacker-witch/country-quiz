@@ -2,6 +2,7 @@ import { useState, FormEvent } from "react";
 import styled from "styled-components";
 import { Question } from "../Question";
 import { AnswerOptionsGroup } from "../AnswerOptionsGroup";
+import { QuizHeader } from "../QuizHeader";
 import { QuizBox } from "../QuizBox";
 import { Button } from "../Button";
 import { AnswerOptionField } from "./AnswerOptionField";
@@ -27,24 +28,27 @@ export const QuestionForm = ({
   };
 
   return (
-    <QuizBox as="form" onSubmit={handleSubmit}>
-      <Fieldset>
-        <Question as="legend">{question}</Question>
-        <AnswerOptionsGroup>
-          {answerOptions.map((option, index) => (
-            <AnswerOptionField
-              key={index}
-              letter={letters[index]}
-              value={option}
-              isChecked={option === checkedAnswer}
-              onChange={(_) => setCheckedAnswer(option)}
-            />
-          ))}
-        </AnswerOptionsGroup>
-      </Fieldset>
+    <>
+      <QuizHeader />
+      <QuizBox as="form" onSubmit={handleSubmit}>
+        <Fieldset>
+          <Question as="legend">{question}</Question>
+          <AnswerOptionsGroup>
+            {answerOptions.map((option, index) => (
+              <AnswerOptionField
+                key={index}
+                letter={letters[index]}
+                value={option}
+                isChecked={option === checkedAnswer}
+                onChange={(_) => setCheckedAnswer(option)}
+              />
+            ))}
+          </AnswerOptionsGroup>
+        </Fieldset>
 
-      <Button type="submit">Submit</Button>
-    </QuizBox>
+        <Button type="submit">Submit</Button>
+      </QuizBox>
+    </>
   );
 };
 
