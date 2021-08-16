@@ -12,17 +12,13 @@ import { AnswerOptionField } from "./AnswerOptionField";
 
 const letters = ["a", "b", "c", "d"];
 
-interface QuestionFormProps {
+interface QuizProps {
   question: string;
   answerOptions: string[];
   onSubmit: (answer: string) => void;
 }
 
-export const QuestionForm = ({
-  question,
-  answerOptions,
-  onSubmit,
-}: QuestionFormProps) => {
+export const Quiz = ({ question, answerOptions, onSubmit }: QuizProps) => {
   const [checkedAnswer, setCheckedAnswer] = useState(answerOptions[0]);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {

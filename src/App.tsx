@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { QuestionForm, QuestionResults } from "components";
+import { Quiz, QuestionResults } from "components";
 
 const data = {
   question: "Kuala Lumpur is the capital of",
@@ -14,7 +14,7 @@ export const App = () => {
   switch (quizStatus) {
     case "ANSWERING":
       return (
-        <QuestionForm
+        <Quiz
           question={data.question}
           answerOptions={data.answerOptions}
           onSubmit={(answer) => setChosenAnswer(answer)}
