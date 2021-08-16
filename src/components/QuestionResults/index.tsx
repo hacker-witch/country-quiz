@@ -27,7 +27,7 @@ export const QuestionResults = ({
     <Container>
       <QuizHeader />
 
-      <QuizBox>
+      <QuizBox as="main">
         <Question>{question}</Question>
 
         <AnswerOptionsGroup as="ol">
