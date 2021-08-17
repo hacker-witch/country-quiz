@@ -2,7 +2,7 @@ import { QuizBox } from "components/QuizBox";
 import { Page } from "../Page";
 
 export const QuizResults = () => (
-  <Page>
+  <Page withHeaderIllustration={false}>
     <QuizBox />
   </Page>
 );
