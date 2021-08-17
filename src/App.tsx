@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Quiz, QuestionResults } from "components";
+import { Quiz, QuestionResults, QuizResults } from "components";
 
 const data = {
   question: "Kuala Lumpur is the capital of",
@@ -10,6 +10,7 @@ const data = {
 enum QuizStatus {
   Answering = "ANSWERING",
   ViewingQuestionResults = "VIEWING_QUESTION_RESULTS",
+  GameOver = "GAME_OVER",
 }
 
 export const App = () => {
@@ -40,6 +41,9 @@ export const App = () => {
           correctAnswer={data.correctAnswer}
         />
       );
+
+    case QuizStatus.GameOver:
+      return <QuizResults />;
 
     default:
       return null;
