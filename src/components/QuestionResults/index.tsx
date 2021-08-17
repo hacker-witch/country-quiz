@@ -1,5 +1,4 @@
 import { Page } from "../Page";
-import { QuizBox } from "../QuizBox";
 import { Question } from "../Question";
 import { Button } from "../Button";
 import { AnswerOptionsGroup } from "../AnswerOptionsGroup";
@@ -25,29 +24,27 @@ export const QuestionResults = ({
   continueQuiz,
 }: QuestionResultsProps) => (
   <Page>
-    <QuizBox>
-      <Question>{question}</Question>
+    <Question>{question}</Question>
 
-      <AnswerOptionsGroup as="ol">
-        {answerOptions.map((answer, index) => (
-          <AnswerOptionItem
-            key={index}
-            letter={letters[index]}
-            value={answer}
-            wasChosen={answer === chosenAnswer}
-            isCorrect={answer === correctAnswer}
-          />
-        ))}
-      </AnswerOptionsGroup>
+    <AnswerOptionsGroup as="ol">
+      {answerOptions.map((answer, index) => (
+        <AnswerOptionItem
+          key={index}
+          letter={letters[index]}
+          value={answer}
+          wasChosen={answer === chosenAnswer}
+          isCorrect={answer === correctAnswer}
+        />
+      ))}
+    </AnswerOptionsGroup>
 
-      <Button
-        type="button"
-        onClick={(e) =>
-          chosenAnswer === correctAnswer ? continueQuiz() : finishQuiz()
-        }
-      >
-        Next
-      </Button>
-    </QuizBox>
+    <Button
+      type="button"
+      onClick={(e) =>
+        chosenAnswer === correctAnswer ? continueQuiz() : finishQuiz()
+      }
+    >
+      Next
+    </Button>
   </Page>
 );

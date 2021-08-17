@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { Page } from "../Page";
 import { Question } from "../Question";
 import { AnswerOptionsGroup } from "../AnswerOptionsGroup";
-import { QuizBox } from "../QuizBox";
 import { Button } from "../Button";
 import { AnswerOptionField } from "./AnswerOptionField";
 
@@ -25,7 +24,7 @@ export const Quiz = ({ question, answerOptions, onSubmit }: QuizProps) => {
 
   return (
     <Page>
-      <QuizBox as="form" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <Fieldset>
           <Question as="legend">{question}</Question>
           <AnswerOptionsGroup>
@@ -42,7 +41,7 @@ export const Quiz = ({ question, answerOptions, onSubmit }: QuizProps) => {
         </Fieldset>
 
         <Button type="submit">Submit</Button>
-      </QuizBox>
+      </form>
     </Page>
   );
 };

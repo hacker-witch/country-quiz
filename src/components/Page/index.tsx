@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import styled from "styled-components";
 import { Container } from "../Container";
+import { QuizBox } from "../QuizBox";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 
@@ -16,7 +17,7 @@ export const Page = ({
   <Wrapper>
     <Container>
       <Header />
-      <main>{children}</main>
+      <QuizBox as="main">{children}</QuizBox>
     </Container>
     <Footer />
   </Wrapper>

@@ -1,8 +1,5 @@
-import { QuizBox } from "components/QuizBox";
 import { Page } from "../Page";
 
 export const QuizResults = () => (
-  <Page withHeaderIllustration={false}>
-    <QuizBox />
-  </Page>
+  <Page withHeaderIllustration={false}>placeholder</Page>
 );
