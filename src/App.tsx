@@ -17,6 +17,10 @@ export const App = () => {
   const [chosenAnswer, setChosenAnswer] = useState<string | null>(null);
   const [quizStatus, setQuizStatus] = useState(QuizStatus.Answering);
 
+  const finishQuiz = () => setQuizStatus(QuizStatus.GameOver);
+
+  const continueQuiz = () => setQuizStatus(QuizStatus.Answering);
+
   const handleQuizSubmit = (answer: string) => {
     setChosenAnswer(answer);
     setQuizStatus(QuizStatus.ViewingQuestionResults);
@@ -39,6 +43,8 @@ export const App = () => {
           answerOptions={data.answerOptions}
           chosenAnswer={chosenAnswer!}
           correctAnswer={data.correctAnswer}
+          finishQuiz={finishQuiz}
+          continueQuiz={continueQuiz}
         />
       );
 

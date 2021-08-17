@@ -12,6 +12,8 @@ interface QuestionResultsProps {
   answerOptions: string[];
   chosenAnswer: string;
   correctAnswer: string;
+  finishQuiz: () => void;
+  continueQuiz: () => void;
 }
 
 export const QuestionResults = ({
@@ -19,6 +21,8 @@ export const QuestionResults = ({
   answerOptions,
   chosenAnswer,
   correctAnswer,
+  finishQuiz,
+  continueQuiz,
 }: QuestionResultsProps) => (
   <Page>
     <QuizBox>
@@ -36,7 +40,14 @@ export const QuestionResults = ({
         ))}
       </AnswerOptionsGroup>
 
-      <Button type="button">Next</Button>
+      <Button
+        type="button"
+        onClick={(e) =>
+          chosenAnswer === correctAnswer ? continueQuiz() : finishQuiz()
+        }
+      >
+        Next
+      </Button>
     </QuizBox>
   </Page>
 );
