@@ -16,7 +16,7 @@ const withIllustrationStyles = {
   wrapper: css`
     @media (min-width: 31rem) {
       position: relative;
-      top: 42px;
+      top: 2.625rem;
       padding: 0;
     }
   `,
