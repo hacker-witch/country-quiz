@@ -7,17 +7,22 @@ const data = {
   correctAnswer: "malaysia",
 };
 
+enum QuizStatus {
+  Answering = "ANSWERING",
+  ViewingQuestionResults = "VIEWING_QUESTION_RESULTS",
+}
+
 export const App = () => {
   const [chosenAnswer, setChosenAnswer] = useState<string | null>(null);
-  const [quizStatus, setQuizStatus] = useState("ANSWERING");
+  const [quizStatus, setQuizStatus] = useState(QuizStatus.Answering);
 
   const handleQuizSubmit = (answer: string) => {
     setChosenAnswer(answer);
-    setQuizStatus("VIEWING_QUESTION_RESULTS");
+    setQuizStatus(QuizStatus.ViewingQuestionResults);
   };
 
   switch (quizStatus) {
-    case "ANSWERING":
+    case QuizStatus.Answering:
       return (
         <Quiz
           question={data.question}
@@ -26,7 +31,7 @@ export const App = () => {
         />
       );
 
-    case "VIEWING_QUESTION_RESULTS":
+    case QuizStatus.ViewingQuestionResults:
       return (
         <QuestionResults
           question={data.question}
