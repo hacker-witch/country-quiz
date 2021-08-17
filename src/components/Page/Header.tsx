@@ -7,8 +7,6 @@ export const Header = () => (
 );
 
 const Wrapper = styled.header`
-  display: flex;
-  align-items: start;
   padding: 2rem 0;
 
   @media (min-width: 31rem) {
@@ -17,7 +15,6 @@ const Wrapper = styled.header`
 `;
 
 const Heading = styled.h1`
-  flex: 1;
   text-align: center;
   font-size: 2.25rem;
   font-weight: 700;
