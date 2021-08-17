@@ -15,7 +15,7 @@ export const Page = ({
 }: PageProps) => (
   <Wrapper>
     <Container>
-      <Header withIllustration={withHeaderIllustration} />
+      <Header />
       <main>{children}</main>
     </Container>
     <Footer />
