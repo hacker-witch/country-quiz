@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import styled from "styled-components";
 import { Container } from "../Container";
 import { Header } from "./Header";
-import { QuizFooter } from "../QuizFooter";
+import { Footer } from "./Footer";
 
 interface PageProps {
   children: ReactNode;
@@ -14,7 +14,7 @@ export const Page = ({ children }: PageProps) => (
       <Header />
       <main>{children}</main>
     </Container>
-    <QuizFooter />
+    <Footer />
   </Wrapper>
 );
 

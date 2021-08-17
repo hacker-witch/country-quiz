@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const QuizFooter = () => (
+export const Footer = () => (
   <Wrapper>
     created by <Username>hacker-witch</Username> - devChallenges.io
   </Wrapper>
