@@ -21,7 +21,7 @@ export const App = () => {
 
   const continueQuiz = () => setQuizStatus(QuizStatus.Answering);
 
-  const handleQuizSubmit = (answer: string) => {
+  const answerQuestion = (answer: string) => {
     setChosenAnswer(answer);
     setQuizStatus(QuizStatus.ViewingQuestionResults);
   };
@@ -32,7 +32,7 @@ export const App = () => {
         <Quiz
           question={data.question}
           answerOptions={data.answerOptions}
-          onSubmit={handleQuizSubmit}
+          onSubmit={answerQuestion}
         />
       );
 
