@@ -6,12 +6,16 @@ import { Footer } from "./Footer";
 
 interface PageProps {
   children: ReactNode;
+  withHeaderIllustration?: boolean;
 }
 
-export const Page = ({ children }: PageProps) => (
+export const Page = ({
+  children,
+  withHeaderIllustration = true,
+}: PageProps) => (
   <Wrapper>
     <Container>
-      <Header />
+      <Header withIllustration={withHeaderIllustration} />
       <main>{children}</main>
     </Container>
     <Footer />

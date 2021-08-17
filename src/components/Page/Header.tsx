@@ -1,10 +1,14 @@
 import styled from "styled-components";
 import { ReactComponent as Illustration } from "img/header-illustration.svg";
 
-export const Header = () => (
+interface HeaderProps {
+  withIllustration: boolean;
+}
+
+export const Header = ({ withIllustration }: HeaderProps) => (
   <Wrapper>
     <Heading>COUNTRY QUIZ</Heading>
-    <StyledIllustration />
+    {withIllustration ? <StyledIllustration /> : null}
   </Wrapper>
 );
 
