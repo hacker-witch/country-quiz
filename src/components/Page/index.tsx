@@ -1,7 +1,6 @@
 import { ReactNode } from "react";
 import styled from "styled-components";
 import { Container } from "../Container";
-import { QuizBox } from "../QuizBox";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 
@@ -17,7 +16,7 @@ export const Page = ({
   <Wrapper>
     <Container>
       <Header />
-      <QuizBox as="main">{children}</QuizBox>
+      <QuizBox>{children}</QuizBox>
     </Container>
     <Footer />
   </Wrapper>
@@ -27,4 +26,10 @@ const Wrapper = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+`;
+
+const QuizBox = styled.main`
+  padding: 2rem;
+  background: #fff;
+  border-radius: 1.5rem;
 `;
