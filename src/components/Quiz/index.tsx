@@ -1,11 +1,8 @@
 import { useState, FormEvent } from "react";
 import styled from "styled-components";
 import { Page } from "../Page";
-import { Container } from "../Container";
 import { Question } from "../Question";
-import { QuizFooter } from "../QuizFooter";
 import { AnswerOptionsGroup } from "../AnswerOptionsGroup";
-import { QuizHeader } from "../QuizHeader";
 import { QuizBox } from "../QuizBox";
 import { Button } from "../Button";
 import { AnswerOptionField } from "./AnswerOptionField";
@@ -28,32 +25,24 @@ export const Quiz = ({ question, answerOptions, onSubmit }: QuizProps) => {
 
   return (
     <Page>
-      <Container>
-        <QuizHeader />
+      <QuizBox as="form" onSubmit={handleSubmit}>
+        <Fieldset>
+          <Question as="legend">{question}</Question>
+          <AnswerOptionsGroup>
+            {answerOptions.map((option, index) => (
+              <AnswerOptionField
+                key={index}
+                letter={letters[index]}
+                value={option}
+                isChecked={option === checkedAnswer}
+                onChange={(_) => setCheckedAnswer(option)}
+              />
+            ))}
+          </AnswerOptionsGroup>
+        </Fieldset>
 
-        <main>
-          <QuizBox as="form" onSubmit={handleSubmit}>
-            <Fieldset>
-              <Question as="legend">{question}</Question>
-              <AnswerOptionsGroup>
-                {answerOptions.map((option, index) => (
-                  <AnswerOptionField
-                    key={index}
-                    letter={letters[index]}
-                    value={option}
-                    isChecked={option === checkedAnswer}
-                    onChange={(_) => setCheckedAnswer(option)}
-                  />
-                ))}
-              </AnswerOptionsGroup>
-            </Fieldset>
-
-            <Button type="submit">Submit</Button>
-          </QuizBox>
-        </main>
-      </Container>
-
-      <QuizFooter />
+        <Button type="submit">Submit</Button>
+      </QuizBox>
     </Page>
   );
 };
