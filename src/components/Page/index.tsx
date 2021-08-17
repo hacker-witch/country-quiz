@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import styled from "styled-components";
 import { Container } from "../Container";
-import { QuizHeader } from "../QuizHeader";
+import { Header } from "./Header";
 import { QuizFooter } from "../QuizFooter";
 
 interface PageProps {
@@ -11,7 +11,7 @@ interface PageProps {
 export const Page = ({ children }: PageProps) => (
   <Wrapper>
     <Container>
-      <QuizHeader />
+      <Header />
       <main>{children}</main>
     </Container>
     <QuizFooter />

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { ReactComponent as Illustration } from "img/header-illustration.svg";
 
-export const QuizHeader = () => (
+export const Header = () => (
   <Wrapper>
     <Heading>COUNTRY QUIZ</Heading>
     <StyledIllustration />
