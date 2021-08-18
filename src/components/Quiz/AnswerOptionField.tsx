@@ -50,6 +50,8 @@ const Wrapper = styled.div`
 
   ${AnswerOption} {
     flex: 1;
+    transition-property: background-color, border-color, color, box-shadow;
+    transition-duration: 0.3s;
   }
 
   ${AnswerOption}:hover {
