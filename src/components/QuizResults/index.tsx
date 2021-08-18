@@ -56,6 +56,8 @@ const Button = styled.button`
   border: 0.125rem solid #1d355d;
   border-radius: 0.75rem;
   background: none;
+  transition-property: background-color, border-color, color, box-shadow;
+  transition-duration: 0.3s;
 
   :hover,
   :focus {

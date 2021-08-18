@@ -11,6 +11,8 @@ export const Button = styled.button`
   border-radius: 0.75rem;
   background: #f9a826;
   box-shadow: 0 0.125rem 0.25rem rgba(252, 168, 47, 0.4);
+  transition-property: background-color, border-color, color, box-shadow;
+  transition-duration: 0.3s;
 
   :focus,
   :hover {
