@@ -15,6 +15,7 @@ enum QuizStatus {
 
 export const App = () => {
   const [chosenAnswer, setChosenAnswer] = useState<string | null>(null);
+  const [correctAnswers, setCorrectAnswers] = useState(0);
   const [quizStatus, setQuizStatus] = useState(QuizStatus.Answering);
 
   const finishQuiz = () => setQuizStatus(QuizStatus.GameOver);
@@ -24,6 +25,10 @@ export const App = () => {
   const answerQuestion = (answer: string) => {
     setChosenAnswer(answer);
     setQuizStatus(QuizStatus.ViewingQuestionResults);
+
+    if (answer === data.correctAnswer) {
+      setCorrectAnswers(correctAnswers + 1);
+    }
   };
 
   switch (quizStatus) {
