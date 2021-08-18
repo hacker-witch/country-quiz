@@ -22,6 +22,12 @@ export const App = () => {
 
   const continueQuiz = () => setQuizStatus(QuizStatus.Answering);
 
+  const resetQuiz = () => {
+    setChosenAnswer(null);
+    setCorrectAnswers(0);
+    setQuizStatus(QuizStatus.Answering);
+  };
+
   const answerQuestion = (answer: string) => {
     setChosenAnswer(answer);
     setQuizStatus(QuizStatus.ViewingQuestionResults);
@@ -54,7 +60,9 @@ export const App = () => {
       );
 
     case QuizStatus.GameOver:
-      return <QuizResults correctAnswers={correctAnswers} />;
+      return (
+        <QuizResults correctAnswers={correctAnswers} resetQuiz={resetQuiz} />
+      );
 
     default:
       return null;

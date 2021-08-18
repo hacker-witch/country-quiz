@@ -4,16 +4,20 @@ import { ReactComponent as Illustration } from "img/results-illustration.svg";
 
 interface QuizResultsProps {
   correctAnswers: number;
+  resetQuiz: () => void;
 }
 
-export const QuizResults = ({ correctAnswers }: QuizResultsProps) => (
+export const QuizResults = ({
+  correctAnswers,
+  resetQuiz,
+}: QuizResultsProps) => (
   <Page withHeaderIllustration={false}>
     <StyledIllustration />
     <Heading>Results</Heading>
     <Results>
       You got <CorrectAnswers>{correctAnswers}</CorrectAnswers> correct answers
     </Results>
-    <Button>Try again</Button>
+    <Button onClick={() => resetQuiz()}>Try again</Button>
   </Page>
 );
 
