@@ -40,7 +40,7 @@ export const Quiz = ({ question, answerOptions, onSubmit }: QuizProps) => {
           </AnswerOptionsGroup>
         </Fieldset>
 
-        <Button type="submit">Submit</Button>
+        <SubmitAnswerButton type="submit">Submit</SubmitAnswerButton>
       </form>
     </Page>
   );
@@ -48,4 +48,9 @@ export const Quiz = ({ question, answerOptions, onSubmit }: QuizProps) => {
 
 const Fieldset = styled.fieldset`
   border: none;
+`;
+
+const SubmitAnswerButton = styled(Button)`
+  margin-top: 1.5rem;
+  margin-left: auto;
 `;

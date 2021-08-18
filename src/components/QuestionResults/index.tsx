@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import { Page } from "../Page";
 import { Question } from "../Question";
 import { Button } from "../Button";
@@ -38,13 +39,18 @@ export const QuestionResults = ({
       ))}
     </AnswerOptionsGroup>
 
-    <Button
+    <NextQuestionButton
       type="button"
       onClick={(e) =>
         chosenAnswer === correctAnswer ? continueQuiz() : finishQuiz()
       }
     >
       Next
-    </Button>
+    </NextQuestionButton>
   </Page>
 );
+
+const NextQuestionButton = styled(Button)`
+  margin-top: 1.5rem;
+  margin-left: auto;
+`;

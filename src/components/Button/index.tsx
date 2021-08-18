@@ -2,8 +2,6 @@ import styled from "styled-components";
 
 export const Button = styled.button`
   display: block;
-  margin-top: 1.5rem;
-  margin-left: auto;
   padding: 1rem 2.25rem;
   font-family: inherit;
   font-size: 1.125rem;
