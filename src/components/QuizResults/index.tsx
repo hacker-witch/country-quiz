@@ -19,7 +19,7 @@ export const QuizResults = ({ correctAnswers }: QuizResultsProps) => (
 
 const StyledIllustration = styled(Illustration)`
   display: block;
-  margin: 1.625rem auto 0 auto;
+  margin: 0.625rem auto 0 auto;
 `;
 
 const Heading = styled.h2`
