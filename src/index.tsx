@@ -20,6 +20,10 @@ const GlobalStyle = createGlobalStyle`
     background-size: cover;
     background-position: center;
   }
+
+  button:hover {
+    cursor: pointer;
+  }
 `;
 
 ReactDOM.render(
