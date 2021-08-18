@@ -6,6 +6,9 @@ export const QuizResults = () => (
   <Page withHeaderIllustration={false}>
     <StyledIllustration />
     <Heading>Results</Heading>
+    <Results>
+      You got <CorrectAnswers>4</CorrectAnswers> correct answers
+    </Results>
   </Page>
 );
 
@@ -20,4 +23,16 @@ const Heading = styled.h2`
   font-size: 3rem;
   font-weight: 700;
   color: #1d355d;
+`;
+
+const Results = styled.p`
+  text-align: center;
+  font-size: 1.125rem;
+  color: #1d355d;
+`;
+
+const CorrectAnswers = styled.span`
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #60bf88;
 `;
