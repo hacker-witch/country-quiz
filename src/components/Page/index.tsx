@@ -29,6 +29,7 @@ const Wrapper = styled.div`
 `;
 
 const QuizBox = styled.main`
+  margin-top: 0.625rem;
   padding: 2rem;
   background: #fff;
   border-radius: 1.5rem;
