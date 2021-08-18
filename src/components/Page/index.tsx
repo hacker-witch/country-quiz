@@ -16,7 +16,9 @@ export const Page = ({
   <Wrapper>
     <Container>
       <Header />
-      <QuizBox>{children}</QuizBox>
+      <QuizBox withHeaderIllustration={withHeaderIllustration}>
+        {children}
+      </QuizBox>
     </Container>
     <Footer />
   </Wrapper>
@@ -28,9 +30,14 @@ const Wrapper = styled.div`
   flex-direction: column;
 `;
 
-const QuizBox = styled.main`
+interface QuizBoxProps {
+  withHeaderIllustration: boolean;
+}
+
+const QuizBox = styled.main<QuizBoxProps>`
   margin-top: 0.625rem;
   padding: 2rem;
+  ${(props) => (props.withHeaderIllustration ? "padding-top: 4.25rem;" : "")}
   background: #fff;
   border-radius: 1.5rem;
 `;
