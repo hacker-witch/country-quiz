@@ -54,7 +54,7 @@ export const App = () => {
       );
 
     case QuizStatus.GameOver:
-      return <QuizResults />;
+      return <QuizResults correctAnswers={correctAnswers} />;
 
     default:
       return null;

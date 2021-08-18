@@ -2,12 +2,16 @@ import { Page } from "../Page";
 import styled from "styled-components";
 import { ReactComponent as Illustration } from "img/results-illustration.svg";
 
-export const QuizResults = () => (
+interface QuizResultsProps {
+  correctAnswers: number;
+}
+
+export const QuizResults = ({ correctAnswers }: QuizResultsProps) => (
   <Page withHeaderIllustration={false}>
     <StyledIllustration />
     <Heading>Results</Heading>
     <Results>
-      You got <CorrectAnswers>4</CorrectAnswers> correct answers
+      You got <CorrectAnswers>{correctAnswers}</CorrectAnswers> correct answers
     </Results>
   </Page>
 );
