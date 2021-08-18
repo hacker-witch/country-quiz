@@ -15,7 +15,7 @@ export const Page = ({
 }: PageProps) => (
   <Wrapper>
     <Container>
-      <Header />
+      <Header withIllustration={withHeaderIllustration} />
       <QuizBox withHeaderIllustration={withHeaderIllustration}>
         {children}
       </QuizBox>
