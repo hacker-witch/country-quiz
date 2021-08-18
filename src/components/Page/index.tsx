@@ -26,8 +26,9 @@ export const Page = ({
 
 const Wrapper = styled.div`
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  align-items: center;
 `;
 
 interface QuizBoxProps {
