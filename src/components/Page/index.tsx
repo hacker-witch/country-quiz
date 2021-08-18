@@ -5,17 +5,15 @@ import { Header } from "./Header";
 import { Footer } from "./Footer";
 
 interface PageProps {
-  className?: string;
   children: ReactNode;
   withHeaderIllustration?: boolean;
 }
 
 export const Page = ({
-  className,
   children,
   withHeaderIllustration = true,
 }: PageProps) => (
-  <Wrapper className={className}>
+  <Wrapper>
     <Container>
       <Header withIllustration={withHeaderIllustration} />
       <QuizBox withHeaderIllustration={withHeaderIllustration}>
