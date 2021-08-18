@@ -29,7 +29,12 @@ const Heading = styled.h1`
 `;
 
 const StyledIllustration = styled(Illustration)`
+  display: none;
   position: absolute;
   top: -0.5rem;
   right: 0;
+
+  @media (min-width: 31rem) {
+    display: block;
+  }
 `;
