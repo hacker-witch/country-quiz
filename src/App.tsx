@@ -9,6 +9,7 @@ enum QuizStatus {
 }
 
 export const App = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [currentQuestion, setCurrentQuestion] = useState("");
   const [answerOptions, setAnswerOptions] = useState<string[]>([]);
   const [correctAnswer, setCorrectAnswer] = useState<string | null>(null);
@@ -18,6 +19,8 @@ export const App = () => {
 
   useEffect(() => {
     if (quizStatus === QuizStatus.Answering) {
+      setIsLoading(true);
+
       const baseURL = "https://restcountries.eu/rest/v2";
       fetch(`${baseURL}/all/?fields=name;capital`)
         .then((response) => response.json())
@@ -33,6 +36,8 @@ export const App = () => {
           const correctCountry = randomCountries[chooseIndex(randomCountries)];
           setCurrentQuestion(`${correctCountry.capital} is the capital of`);
           setCorrectAnswer(correctCountry.name);
+
+          setIsLoading(false);
         });
     }
   }, [quizStatus]);
@@ -55,6 +60,8 @@ export const App = () => {
       setCorrectAnswers(correctAnswers + 1);
     }
   };
+
+  if (isLoading) return null;
 
   switch (quizStatus) {
     case QuizStatus.Answering:
