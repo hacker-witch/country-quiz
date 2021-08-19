@@ -26,6 +26,7 @@ export const Page = ({
 
 const Wrapper = styled.div`
   min-height: 100vh;
+  padding-top: 2rem;
   display: grid;
   grid-template-rows: 1fr auto;
   align-items: center;
