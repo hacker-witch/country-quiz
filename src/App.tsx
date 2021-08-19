@@ -2,9 +2,56 @@ import { useState, useEffect } from "react";
 import { Quiz, QuestionResults, QuizResults } from "components";
 import { chooseIndex } from "utils";
 
-const generateQuestion = async () => {
-  const baseURL = "https://restcountries.eu/rest/v2";
+const baseURL = "https://restcountries.eu/rest/v2";
 
+enum QuestionType {
+  Flag = "FLAG",
+  Capital = "CAPITAL",
+}
+
+const generateQuestion = async () => {
+  const questionType =
+    Math.floor(Math.random() * 2) === 0
+      ? QuestionType.Flag
+      : QuestionType.Capital;
+
+  switch (questionType) {
+    case QuestionType.Flag:
+      return await generateFlagQuestion();
+    case QuestionType.Capital:
+      return await generateCapitalQuestion();
+  }
+};
+
+const generateFlagQuestion = async () => {
+  const response = await fetch(`${baseURL}/all/?fields=name;flag`);
+
+  if (!response.ok) {
+    throw new Error("Response was not ok!");
+  }
+
+  const countries = await response.json();
+
+  const randomCountries = Array.from(
+    { length: 4 },
+    () => countries[chooseIndex(countries)]
+  );
+
+  const countryNames = randomCountries.map((country) => country.name);
+
+  const correctCountry = randomCountries[chooseIndex(randomCountries)];
+
+  const question = {
+    flag: correctCountry.flag,
+    answerOptions: countryNames,
+    title: "Which country does this flag belong to?",
+    correctAnswer: correctCountry.name,
+  };
+
+  return question;
+};
+
+const generateCapitalQuestion = async () => {
   const response = await fetch(`${baseURL}/all/?fields=name;capital`);
 
   if (!response.ok) {
