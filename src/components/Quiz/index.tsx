@@ -9,12 +9,18 @@ import { AnswerOptionField } from "./AnswerOptionField";
 const letters = ["a", "b", "c", "d"];
 
 interface QuizProps {
+  flag?: string;
   question: string;
   answerOptions: string[];
   onSubmit: (answer: string) => void;
 }
 
-export const Quiz = ({ question, answerOptions, onSubmit }: QuizProps) => {
+export const Quiz = ({
+  flag,
+  question,
+  answerOptions,
+  onSubmit,
+}: QuizProps) => {
   const [checkedAnswer, setCheckedAnswer] = useState(answerOptions[0]);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -25,6 +31,7 @@ export const Quiz = ({ question, answerOptions, onSubmit }: QuizProps) => {
   return (
     <Page>
       <form onSubmit={handleSubmit}>
+        {flag ? <Flag src={flag} alt="" /> : null}
         <Fieldset>
           <Question as="legend">{question}</Question>
           <AnswerOptionsGroup>
@@ -48,6 +55,14 @@ export const Quiz = ({ question, answerOptions, onSubmit }: QuizProps) => {
 
 const Fieldset = styled.fieldset`
   border: none;
+`;
+
+const Flag = styled.img`
+  margin-bottom: 28px;
+  width: 84px;
+  height: 54px;
+  border-radius: 4px;
+  box-shadow: 0px 4px 24px 0px #0000001a;
 `;
 
 const SubmitAnswerButton = styled(Button)`
