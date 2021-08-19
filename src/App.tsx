@@ -43,17 +43,19 @@ export const App = () => {
 
   useEffect(() => {
     if (quizStatus === QuizStatus.Answering) {
-      setIsLoading(true);
-
-      startQuiz().then(() => setIsLoading(false));
+      startQuiz();
     }
   }, [quizStatus]);
 
   const startQuiz = async () => {
+    setIsLoading(true);
+
     const question = await generateQuestion();
     setAnswerOptions(question.answerOptions);
     setCurrentQuestion(question.title);
     setCorrectAnswer(question.correctAnswer);
+
+    setIsLoading(false);
   };
 
   const finishQuiz = () => setQuizStatus(QuizStatus.GameOver);
