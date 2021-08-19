@@ -17,28 +17,41 @@ export const App = () => {
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [quizStatus, setQuizStatus] = useState(QuizStatus.Answering);
 
+  const generateQuestion = async () => {
+    const baseURL = "https://restcountries.eu/rest/v2";
+
+    const response = await fetch(`${baseURL}/all/?fields=name;capital`);
+    const countries = await response.json();
+
+    const randomCountries = Array.from(
+      { length: 4 },
+      () => countries[chooseIndex(countries)]
+    );
+
+    const countryNames = randomCountries.map((country) => country.name);
+
+    const correctCountry = randomCountries[chooseIndex(randomCountries)];
+
+    const question = {
+      answerOptions: countryNames,
+      title: `${correctCountry.capital} is the capital of`,
+      correctAnswer: correctCountry.name,
+    };
+
+    return question;
+  };
+
   useEffect(() => {
     if (quizStatus === QuizStatus.Answering) {
       setIsLoading(true);
 
-      const baseURL = "https://restcountries.eu/rest/v2";
-      fetch(`${baseURL}/all/?fields=name;capital`)
-        .then((response) => response.json())
-        .then((data) => {
-          const randomCountries = Array.from(
-            { length: 4 },
-            () => data[chooseIndex(data)]
-          );
+      generateQuestion().then((question) => {
+        setAnswerOptions(question.answerOptions);
+        setCurrentQuestion(question.title);
+        setCorrectAnswer(question.correctAnswer);
 
-          const countryNames = randomCountries.map((country) => country.name);
-          setAnswerOptions(countryNames);
-
-          const correctCountry = randomCountries[chooseIndex(randomCountries)];
-          setCurrentQuestion(`${correctCountry.capital} is the capital of`);
-          setCorrectAnswer(correctCountry.name);
-
-          setIsLoading(false);
-        });
+        setIsLoading(false);
+      });
     }
   }, [quizStatus]);
 
