@@ -2,6 +2,35 @@ import { useState, useEffect } from "react";
 import { Quiz, QuestionResults, QuizResults } from "components";
 import { chooseIndex } from "utils";
 
+const generateQuestion = async () => {
+  const baseURL = "https://restcountries.eu/rest/v2";
+
+  const response = await fetch(`${baseURL}/all/?fields=name;capital`);
+
+  if (!response.ok) {
+    throw new Error("Response was not ok!");
+  }
+
+  const countries = await response.json();
+
+  const randomCountries = Array.from(
+    { length: 4 },
+    () => countries[chooseIndex(countries)]
+  );
+
+  const countryNames = randomCountries.map((country) => country.name);
+
+  const correctCountry = randomCountries[chooseIndex(randomCountries)];
+
+  const question = {
+    answerOptions: countryNames,
+    title: `${correctCountry.capital} is the capital of`,
+    correctAnswer: correctCountry.name,
+  };
+
+  return question;
+};
+
 enum QuizStatus {
   Answering = "ANSWERING",
   ViewingQuestionResults = "VIEWING_QUESTION_RESULTS",
@@ -16,35 +45,6 @@ export const App = () => {
   const [chosenAnswer, setChosenAnswer] = useState<string | null>(null);
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [quizStatus, setQuizStatus] = useState(QuizStatus.Answering);
-
-  const generateQuestion = async () => {
-    const baseURL = "https://restcountries.eu/rest/v2";
-
-    const response = await fetch(`${baseURL}/all/?fields=name;capital`);
-
-    if (!response.ok) {
-      throw new Error("Response was not ok!");
-    }
-
-    const countries = await response.json();
-
-    const randomCountries = Array.from(
-      { length: 4 },
-      () => countries[chooseIndex(countries)]
-    );
-
-    const countryNames = randomCountries.map((country) => country.name);
-
-    const correctCountry = randomCountries[chooseIndex(randomCountries)];
-
-    const question = {
-      answerOptions: countryNames,
-      title: `${correctCountry.capital} is the capital of`,
-      correctAnswer: correctCountry.name,
-    };
-
-    return question;
-  };
 
   useEffect(() => {
     startQuiz();
