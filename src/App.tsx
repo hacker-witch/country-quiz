@@ -10,7 +10,7 @@ enum QuizStatus {
 
 export const App = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [currentQuestion, setCurrentQuestion] = useState("");
+  const [currentQuestion, setCurrentQuestion] = useState<string | null>(null);
   const [answerOptions, setAnswerOptions] = useState<string[]>([]);
   const [correctAnswer, setCorrectAnswer] = useState<string | null>(null);
   const [chosenAnswer, setChosenAnswer] = useState<string | null>(null);
@@ -94,7 +94,7 @@ export const App = () => {
     case QuizStatus.Answering:
       return (
         <Quiz
-          question={currentQuestion}
+          question={currentQuestion!}
           answerOptions={answerOptions}
           onSubmit={answerQuestion}
         />
@@ -103,7 +103,7 @@ export const App = () => {
     case QuizStatus.ViewingQuestionResults:
       return (
         <QuestionResults
-          question={currentQuestion}
+          question={currentQuestion!}
           answerOptions={answerOptions}
           chosenAnswer={chosenAnswer!}
           correctAnswer={correctAnswer!}
