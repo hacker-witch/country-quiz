@@ -21,12 +21,10 @@ export const App = () => {
     fetch(`${baseURL}/all/?fields=name;capital`)
       .then((response) => response.json())
       .then((data) => {
-        const randomCountries = [
-          data[chooseIndex(data)],
-          data[chooseIndex(data)],
-          data[chooseIndex(data)],
-          data[chooseIndex(data)],
-        ];
+        const randomCountries = Array.from(
+          { length: 4 },
+          () => data[chooseIndex(data)]
+        );
 
         const countryNames = randomCountries.map((country) => country.name);
         setAnswerOptions(countryNames);
