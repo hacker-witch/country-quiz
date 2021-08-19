@@ -9,7 +9,14 @@ enum QuestionType {
   Capital = "CAPITAL",
 }
 
-const generateQuestion = async () => {
+interface Question {
+  title: string;
+  flag?: string;
+  answerOptions: string[];
+  correctAnswer: string;
+}
+
+const generateQuestion = async (): Promise<Question> => {
   const questionType =
     Math.floor(Math.random() * 2) === 0
       ? QuestionType.Flag
