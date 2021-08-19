@@ -58,11 +58,11 @@ const Fieldset = styled.fieldset`
 `;
 
 const Flag = styled.img`
-  margin-bottom: 28px;
-  width: 84px;
-  height: 54px;
-  border-radius: 4px;
-  box-shadow: 0px 4px 24px 0px #0000001a;
+  margin-bottom: 1.75rem;
+  width: 5.25rem;
+  height: 3.375rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 0.25rem 1.5rem 0 #0000001a;
 `;
 
 const SubmitAnswerButton = styled(Button)`
