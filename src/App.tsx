@@ -21,6 +21,11 @@ export const App = () => {
     const baseURL = "https://restcountries.eu/rest/v2";
 
     const response = await fetch(`${baseURL}/all/?fields=name;capital`);
+
+    if (!response.ok) {
+      throw new Error("Response was not ok!");
+    }
+
     const countries = await response.json();
 
     const randomCountries = Array.from(
@@ -50,12 +55,16 @@ export const App = () => {
   const startQuiz = async () => {
     setIsLoading(true);
 
-    const question = await generateQuestion();
-    setAnswerOptions(question.answerOptions);
-    setCurrentQuestion(question.title);
-    setCorrectAnswer(question.correctAnswer);
-
-    setIsLoading(false);
+    try {
+      const question = await generateQuestion();
+      setAnswerOptions(question.answerOptions);
+      setCurrentQuestion(question.title);
+      setCorrectAnswer(question.correctAnswer);
+    } catch (error) {
+      console.error(error.message);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const finishQuiz = () => setQuizStatus(QuizStatus.GameOver);
