@@ -47,10 +47,8 @@ export const App = () => {
   };
 
   useEffect(() => {
-    if (quizStatus === QuizStatus.Answering) {
-      startQuiz();
-    }
-  }, [quizStatus]);
+    startQuiz();
+  }, []);
 
   const startQuiz = async () => {
     setIsLoading(true);
