@@ -45,15 +45,16 @@ export const App = () => {
     if (quizStatus === QuizStatus.Answering) {
       setIsLoading(true);
 
-      generateQuestion().then((question) => {
-        setAnswerOptions(question.answerOptions);
-        setCurrentQuestion(question.title);
-        setCorrectAnswer(question.correctAnswer);
-
-        setIsLoading(false);
-      });
+      startQuiz().then(() => setIsLoading(false));
     }
   }, [quizStatus]);
+
+  const startQuiz = async () => {
+    const question = await generateQuestion();
+    setAnswerOptions(question.answerOptions);
+    setCurrentQuestion(question.title);
+    setCorrectAnswer(question.correctAnswer);
+  };
 
   const finishQuiz = () => setQuizStatus(QuizStatus.GameOver);
 
