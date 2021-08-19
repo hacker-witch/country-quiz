@@ -67,7 +67,10 @@ export const App = () => {
 
   const finishQuiz = () => setQuizStatus(QuizStatus.GameOver);
 
-  const continueQuiz = () => setQuizStatus(QuizStatus.Answering);
+  const continueQuiz = () => {
+    setQuizStatus(QuizStatus.Answering);
+    startQuiz();
+  };
 
   const resetQuiz = () => {
     setChosenAnswer(null);
