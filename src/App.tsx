@@ -76,6 +76,7 @@ export const App = () => {
     setChosenAnswer(null);
     setCorrectAnswers(0);
     setQuizStatus(QuizStatus.Answering);
+    startQuiz();
   };
 
   const answerQuestion = (answer: string) => {
