@@ -17,23 +17,25 @@ export const App = () => {
   const [quizStatus, setQuizStatus] = useState(QuizStatus.Answering);
 
   useEffect(() => {
-    const baseURL = "https://restcountries.eu/rest/v2";
-    fetch(`${baseURL}/all/?fields=name;capital`)
-      .then((response) => response.json())
-      .then((data) => {
-        const randomCountries = Array.from(
-          { length: 4 },
-          () => data[chooseIndex(data)]
-        );
+    if (quizStatus === QuizStatus.Answering) {
+      const baseURL = "https://restcountries.eu/rest/v2";
+      fetch(`${baseURL}/all/?fields=name;capital`)
+        .then((response) => response.json())
+        .then((data) => {
+          const randomCountries = Array.from(
+            { length: 4 },
+            () => data[chooseIndex(data)]
+          );
 
-        const countryNames = randomCountries.map((country) => country.name);
-        setAnswerOptions(countryNames);
+          const countryNames = randomCountries.map((country) => country.name);
+          setAnswerOptions(countryNames);
 
-        const correctCountry = randomCountries[chooseIndex(randomCountries)];
-        setCurrentQuestion(`${correctCountry.capital} is the capital of`);
-        setCorrectAnswer(correctCountry.name);
-      });
-  }, []);
+          const correctCountry = randomCountries[chooseIndex(randomCountries)];
+          setCurrentQuestion(`${correctCountry.capital} is the capital of`);
+          setCorrectAnswer(correctCountry.name);
+        });
+    }
+  }, [quizStatus]);
 
   const finishQuiz = () => setQuizStatus(QuizStatus.GameOver);
 
