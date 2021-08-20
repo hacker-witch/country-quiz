@@ -113,6 +113,7 @@ export const App = () => {
       setAnswerOptions(question.answerOptions);
       setCurrentQuestion(question.title);
       setCorrectAnswer(question.correctAnswer);
+      setChosenAnswer(question.answerOptions[0]);
       question.flag ? setFlag(question.flag) : setFlag(null);
     } catch (error) {
       console.error(error.message);
