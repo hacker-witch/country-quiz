@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 export const AnswerOption = styled.div`
-  height: 3.5rem;
-  padding: 0 1rem;
+  padding: 0.532rem 1rem;
   display: flex;
   align-items: center;
   font-size: 1.125rem;
