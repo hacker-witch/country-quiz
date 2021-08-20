@@ -16,6 +16,15 @@ interface Question {
   correctAnswer: string;
 }
 
+interface Country {
+  name: string;
+  capital?: string;
+  flag?: string;
+}
+
+const chooseCountries = (countries: Country[]) =>
+  Array.from({ length: 4 }, () => countries[chooseIndex(countries)]);
+
 const generateQuestion = async (): Promise<Question> => {
   const questionType =
     Math.floor(Math.random() * 2) === 0
@@ -39,10 +48,7 @@ const generateFlagQuestion = async () => {
 
   const countries = await response.json();
 
-  const randomCountries = Array.from(
-    { length: 4 },
-    () => countries[chooseIndex(countries)]
-  );
+  const randomCountries = chooseCountries(countries);
 
   const countryNames = randomCountries.map((country) => country.name);
 
@@ -67,10 +73,7 @@ const generateCapitalQuestion = async () => {
 
   const countries = await response.json();
 
-  const randomCountries = Array.from(
-    { length: 4 },
-    () => countries[chooseIndex(countries)]
-  );
+  const randomCountries = chooseCountries(countries);
 
   const countryNames = randomCountries.map((country) => country.name);
 
