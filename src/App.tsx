@@ -22,8 +22,20 @@ interface Country {
   flag?: string;
 }
 
-const chooseCountries = (countries: Country[]) =>
-  Array.from({ length: 4 }, () => countries[chooseIndex(countries)]);
+const chooseCountries = (countries: Country[]) => {
+  const numberOfAnswerOptions = 4;
+  const chosenCountries: Country[] = [];
+
+  while (chosenCountries.length < numberOfAnswerOptions) {
+    const index = chooseIndex(countries);
+    const country = countries[index];
+    if (!chosenCountries.includes(country)) {
+      chosenCountries.push(country);
+    }
+  }
+
+  return chosenCountries;
+};
 
 const generateQuestion = async (): Promise<Question> => {
   const questionType =
