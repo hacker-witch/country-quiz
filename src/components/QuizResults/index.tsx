@@ -15,7 +15,8 @@ export const QuizResults = ({
     <StyledIllustration />
     <Heading>Results</Heading>
     <Results>
-      You got <CorrectAnswers>{correctAnswers}</CorrectAnswers> correct answers
+      You got <CorrectAnswers>{correctAnswers}</CorrectAnswers> correct{" "}
+      {correctAnswers > 1 ? "answers" : "answer"}
     </Results>
     <Button onClick={() => resetQuiz()}>Try again</Button>
   </Page>
