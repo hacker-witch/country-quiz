@@ -161,6 +161,7 @@ export const App = () => {
       return (
         <QuestionResults
           question={currentQuestion!}
+          flag={flag ? flag : undefined}
           answerOptions={answerOptions}
           chosenAnswer={chosenAnswer!}
           correctAnswer={correctAnswer!}

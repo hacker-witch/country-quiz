@@ -8,6 +8,7 @@ import { AnswerOptionItem } from "./AnswerOptionItem";
 const letters = ["a", "b", "c", "d"];
 
 interface QuestionResultsProps {
+  flag?: string;
   question: string;
   answerOptions: string[];
   chosenAnswer: string;
@@ -18,6 +19,7 @@ interface QuestionResultsProps {
 
 export const QuestionResults = ({
   question,
+  flag,
   answerOptions,
   chosenAnswer,
   correctAnswer,
@@ -25,7 +27,8 @@ export const QuestionResults = ({
   continueQuiz,
 }: QuestionResultsProps) => (
   <Page>
-    <Question>{question}</Question>
+    {flag ? <Flag src={flag} alt="" /> : null}
+    <Question as="div">{question}</Question>
 
     <AnswerOptionsGroup as="ol">
       {answerOptions.map((answer, index) => (
@@ -49,6 +52,14 @@ export const QuestionResults = ({
     </NextQuestionButton>
   </Page>
 );
+
+const Flag = styled.img`
+  margin-bottom: 1.75rem;
+  width: 5.25rem;
+  height: 3.375rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 0.25rem 1.5rem 0 #0000001a;
+`;
 
 const NextQuestionButton = styled(Button)`
   margin-top: 1.5rem;
