@@ -154,6 +154,7 @@ export const App = () => {
           question={currentQuestion!}
           flag={flag ? flag : undefined}
           answerOptions={answerOptions}
+          chosenAnswer={chosenAnswer!}
           onSubmit={answerQuestion}
         />
       );

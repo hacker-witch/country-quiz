@@ -12,6 +12,7 @@ interface QuizProps {
   flag?: string;
   question: string;
   answerOptions: string[];
+  chosenAnswer: string;
   onSubmit: (answer: string) => void;
 }
 
@@ -19,9 +20,10 @@ export const Quiz = ({
   flag,
   question,
   answerOptions,
+  chosenAnswer,
   onSubmit,
 }: QuizProps) => {
-  const [checkedAnswer, setCheckedAnswer] = useState(answerOptions[0]);
+  const [checkedAnswer, setCheckedAnswer] = useState(chosenAnswer);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
