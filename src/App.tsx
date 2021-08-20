@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Quiz, QuestionResults, QuizResults } from "components";
-import { chooseIndex } from "utils";
+import { chooseIndex, chooseUniqueItems } from "utils";
 
 const baseURL = "https://restcountries.eu/rest/v2";
 
@@ -24,17 +24,7 @@ interface Country {
 
 const chooseCountries = (countries: Country[]) => {
   const numberOfAnswerOptions = 4;
-  const chosenCountries: Country[] = [];
-
-  while (chosenCountries.length < numberOfAnswerOptions) {
-    const index = chooseIndex(countries);
-    const country = countries[index];
-    if (!chosenCountries.includes(country)) {
-      chosenCountries.push(country);
-    }
-  }
-
-  return chosenCountries;
+  return chooseUniqueItems(countries, numberOfAnswerOptions);
 };
 
 const generateQuestion = async (): Promise<Question> => {
