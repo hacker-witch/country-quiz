@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Quiz, QuestionResults, QuizResults } from "components";
+import { Quiz, QuestionResults, QuizResults, LoadingPage } from "components";
 import { chooseIndex, chooseUniqueItems } from "utils";
 
 const baseURL = "https://restcountries.eu/rest/v2";
@@ -150,7 +150,7 @@ export const App = () => {
     }
   };
 
-  if (isLoading) return null;
+  if (isLoading) return <LoadingPage />;
 
   switch (quizStatus) {
     case QuizStatus.Answering:
