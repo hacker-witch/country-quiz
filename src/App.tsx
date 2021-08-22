@@ -48,9 +48,22 @@ const generateQuestion = async (): Promise<Question> => {
 
   switch (questionType) {
     case QuestionType.Flag:
-      return await generateFlagQuestion();
+      try {
+        return await generateFlagQuestion();
+      } catch (error) {
+        throw new Error(
+          "There was a network error. Please, try accessing this page again later."
+        );
+      }
+
     case QuestionType.Capital:
-      return await generateCapitalQuestion();
+      try {
+        return await generateCapitalQuestion();
+      } catch (error) {
+        throw new Error(
+          "There was a network error. Please, try accessing this page again later."
+        );
+      }
   }
 };
 
@@ -80,33 +93,27 @@ const generateFlagQuestion = async () => {
 };
 
 const generateCapitalQuestion = async () => {
-  try {
-    const response = await fetch(`${baseURL}/all/?fields=name;capital`);
+  const response = await fetch(`${baseURL}/all/?fields=name;capital`);
 
-    if (!response.ok) {
-      throw new Error("Response was not ok!");
-    }
-
-    const countries = await response.json();
-
-    const randomCountries = chooseCountries(countries);
-
-    const countryNames = randomCountries.map((country) => country.name);
-
-    const correctCountry = randomCountries[chooseIndex(randomCountries)];
-
-    const question = {
-      answerOptions: countryNames,
-      title: `${correctCountry.capital} is the capital of`,
-      correctAnswer: correctCountry.name,
-    };
-
-    return question;
-  } catch (error) {
-    throw new Error(
-      "There was a network error. Please, try accessing this page again later."
-    );
+  if (!response.ok) {
+    throw new Error("Response was not ok!");
   }
+
+  const countries = await response.json();
+
+  const randomCountries = chooseCountries(countries);
+
+  const countryNames = randomCountries.map((country) => country.name);
+
+  const correctCountry = randomCountries[chooseIndex(randomCountries)];
+
+  const question = {
+    answerOptions: countryNames,
+    title: `${correctCountry.capital} is the capital of`,
+    correctAnswer: correctCountry.name,
+  };
+
+  return question;
 };
 
 enum QuizStatus {
