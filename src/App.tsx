@@ -5,7 +5,7 @@ import {
   LoadingPage,
   ErrorPage,
 } from "components";
-import { useQuiz, QuizStatus } from "hooks";
+import { useQuiz } from "hooks";
 
 export const App = () => {
   const {
@@ -22,6 +22,7 @@ export const App = () => {
     continueQuiz,
     resetQuiz,
     answerQuestion,
+    QuizStatus,
   } = useQuiz();
 
   if (isLoading) return <LoadingPage />;

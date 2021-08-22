@@ -107,7 +107,7 @@ const generateCapitalQuestion = async () => {
   return question;
 };
 
-export enum QuizStatus {
+enum QuizStatus {
   Answering = "ANSWERING",
   ViewingQuestionResults = "VIEWING_QUESTION_RESULTS",
   GameOver = "GAME_OVER",
@@ -178,6 +178,7 @@ export const useQuiz = () => {
     chosenAnswer,
     correctAnswers,
     quizStatus,
+    QuizStatus,
     startQuiz,
     finishQuiz,
     continueQuiz,
