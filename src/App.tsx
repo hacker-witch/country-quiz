@@ -9,9 +9,9 @@ import {
 import { chooseIndex, chooseUniqueItems } from "utils";
 
 class ApplicationError extends Error {
-  constructor(message: string, name: string) {
+  constructor(message: string) {
     super(message);
-    this.name = name;
+    this.name = this.constructor.name;
   }
 }
 
