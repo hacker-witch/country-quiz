@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { TransitionGroup, Transition } from "react-transition-group";
 import styled from "styled-components";
 import { AnswerOption, Letter, Value } from "../AnswerOption";
 import correctIcon from "img/check-circle-rounded-icon.svg";
@@ -39,32 +40,57 @@ interface AnswerResultProps {
   children: ReactNode;
 }
 
-const AnswerResult = ({ isCorrect, children }: AnswerResultProps) =>
-  isCorrect ? (
-    <CorrectAnswer as="li">
-      {children}
-      <Icon src={correctIcon} alt="This answer is correct!" />
-    </CorrectAnswer>
-  ) : (
-    <WronglyChosenAnswer as="li">
-      {children}
-      <Icon src={wrongIcon} alt="You've chosen the wrong answer!" />
-    </WronglyChosenAnswer>
-  );
+const AnswerResult = ({ isCorrect, children }: AnswerResultProps) => (
+  <TransitionGroup component={null}>
+    <Transition timeout={0} appear>
+      {(state) =>
+        isCorrect ? (
+          <CorrectAnswer as="li" transitionState={state}>
+            {children}
+            <Icon src={correctIcon} alt="This answer is correct!" />
+          </CorrectAnswer>
+        ) : (
+          <WronglyChosenAnswer as="li" transitionState={state}>
+            {children}
+            <Icon src={wrongIcon} alt="You've chosen the wrong answer!" />
+          </WronglyChosenAnswer>
+        )
+      }
+    </Transition>
+  </TransitionGroup>
+);
 
 const Icon = styled.img`
   fill: #fff;
   margin-left: auto;
 `;
 
-const CorrectAnswer = styled(AnswerOption)`
-  color: #fff;
-  background: #60bf88;
-  border-color: #60bf88;
+interface AnswerProps {
+  transitionState: string;
+}
+
+const CorrectAnswer = styled(AnswerOption)<AnswerProps>`
+  transition-property: color, background-color, border-color;
+  transition-duration: 0.3s;
+  color: ${(props) =>
+    props.transitionState === "entering" ? "rgba(96, 102, 208, 0.8)" : "#fff"};
+  background: ${(props) =>
+    props.transitionState === "entering" ? "none" : "#60bf88"};
+  border-color: ${(props) =>
+    props.transitionState === "entering"
+      ? "rgba(96, 102, 208, 0.7)"
+      : "#60bf88"};
 `;
 
-const WronglyChosenAnswer = styled(AnswerOption)`
-  color: #fff;
-  background: #ea8282;
-  border-color: #ea8282;
+const WronglyChosenAnswer = styled(AnswerOption)<AnswerProps>`
+  transition-property: color, background-color, border-color;
+  transition-duration: 0.3s;
+  color: ${(props) =>
+    props.transitionState === "entering" ? "rgba(96, 102, 208, 0.8)" : "#fff"};
+  background: ${(props) =>
+    props.transitionState === "entering" ? "none" : "#ea8282"};
+  border-color: ${(props) =>
+    props.transitionState === "entering"
+      ? "rgba(96, 102, 208, 0.7)"
+      : "#ea8282"};
 `;
