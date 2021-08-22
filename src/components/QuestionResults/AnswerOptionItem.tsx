@@ -1,5 +1,5 @@
 import { ReactNode, useRef } from "react";
-import { TransitionGroup, Transition } from "react-transition-group";
+import { Transition } from "react-transition-group";
 import styled from "styled-components";
 import { AnswerOption, Letter, Value } from "../AnswerOption";
 import correctIcon from "img/check-circle-rounded-icon.svg";
@@ -43,23 +43,21 @@ interface AnswerResultProps {
 const AnswerResult = ({ isCorrect, children }: AnswerResultProps) => {
   const nodeRef = useRef(null);
   return (
-    <TransitionGroup component={null}>
-      <Transition nodeRef={nodeRef} timeout={0} appear>
-        {(state) =>
-          isCorrect ? (
-            <CorrectAnswer as="li" transitionState={state}>
-              {children}
-              <Icon src={correctIcon} alt="This answer is correct!" />
-            </CorrectAnswer>
-          ) : (
-            <WronglyChosenAnswer as="li" transitionState={state}>
-              {children}
-              <Icon src={wrongIcon} alt="You've chosen the wrong answer!" />
-            </WronglyChosenAnswer>
-          )
-        }
-      </Transition>
-    </TransitionGroup>
+    <Transition in nodeRef={nodeRef} timeout={0} appear>
+      {(state) =>
+        isCorrect ? (
+          <CorrectAnswer as="li" transitionState={state}>
+            {children}
+            <Icon src={correctIcon} alt="This answer is correct!" />
+          </CorrectAnswer>
+        ) : (
+          <WronglyChosenAnswer as="li" transitionState={state}>
+            {children}
+            <Icon src={wrongIcon} alt="You've chosen the wrong answer!" />
+          </WronglyChosenAnswer>
+        )
+      }
+    </Transition>
   );
 };
 
