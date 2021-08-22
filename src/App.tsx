@@ -73,27 +73,33 @@ const generateFlagQuestion = async () => {
 };
 
 const generateCapitalQuestion = async () => {
-  const response = await fetch(`${baseURL}/all/?fields=name;capital`);
+  try {
+    const response = await fetch(`${baseURL}/all/?fields=name;capital`);
 
-  if (!response.ok) {
-    throw new Error("Response was not ok!");
+    if (!response.ok) {
+      throw new Error("Response was not ok!");
+    }
+
+    const countries = await response.json();
+
+    const randomCountries = chooseCountries(countries);
+
+    const countryNames = randomCountries.map((country) => country.name);
+
+    const correctCountry = randomCountries[chooseIndex(randomCountries)];
+
+    const question = {
+      answerOptions: countryNames,
+      title: `${correctCountry.capital} is the capital of`,
+      correctAnswer: correctCountry.name,
+    };
+
+    return question;
+  } catch (error) {
+    throw new Error(
+      "There was a network error. Please, try accessing this page again later."
+    );
   }
-
-  const countries = await response.json();
-
-  const randomCountries = chooseCountries(countries);
-
-  const countryNames = randomCountries.map((country) => country.name);
-
-  const correctCountry = randomCountries[chooseIndex(randomCountries)];
-
-  const question = {
-    answerOptions: countryNames,
-    title: `${correctCountry.capital} is the capital of`,
-    correctAnswer: correctCountry.name,
-  };
-
-  return question;
 };
 
 enum QuizStatus {
