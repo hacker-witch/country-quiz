@@ -8,6 +8,13 @@ import {
 } from "components";
 import { chooseIndex, chooseUniqueItems } from "utils";
 
+class ApplicationError extends Error {
+  constructor(message: string, name: string) {
+    super(message);
+    this.name = name;
+  }
+}
+
 const baseURL = "https://restcountries.eu/rest/v2";
 
 enum QuestionType {
