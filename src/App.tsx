@@ -67,6 +67,10 @@ const generateQuestion = async (): Promise<Question> => {
       try {
         return await generateFlagQuestion();
       } catch (error) {
+        if (error instanceof ApplicationError) {
+          throw error;
+        }
+
         throw new NetworkError();
       }
 
@@ -74,6 +78,10 @@ const generateQuestion = async (): Promise<Question> => {
       try {
         return await generateCapitalQuestion();
       } catch (error) {
+        if (error instanceof ApplicationError) {
+          throw error;
+        }
+
         throw new NetworkError();
       }
   }
