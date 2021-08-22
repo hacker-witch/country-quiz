@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   Quiz,
   QuestionResults,
@@ -18,12 +19,17 @@ export const App = () => {
     chosenAnswer,
     correctAnswers,
     quizStatus,
+    startQuiz,
     finishQuiz,
     continueQuiz,
     resetQuiz,
     answerQuestion,
     QuizStatus,
   } = useQuiz();
+
+  useEffect(() => {
+    startQuiz();
+  }, []);
 
   if (isLoading) return <LoadingPage />;
 

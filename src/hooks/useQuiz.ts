@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { chooseIndex, chooseUniqueItems } from "utils";
 import { ApplicationError, NetworkError, UnexpectedError } from "errors";
 
@@ -123,10 +123,6 @@ export const useQuiz = () => {
   const [chosenAnswer, setChosenAnswer] = useState<string | null>(null);
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [quizStatus, setQuizStatus] = useState(QuizStatus.Answering);
-
-  useEffect(() => {
-    startQuiz();
-  }, []);
 
   const startQuiz = async () => {
     setIsLoading(true);
