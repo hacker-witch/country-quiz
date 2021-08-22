@@ -6,8 +6,9 @@ import {
   LoadingPage,
   ErrorPage,
 } from "components";
-import { chooseIndex, chooseUniqueItems } from "utils";
+import { chooseIndex } from "utils";
 import { ApplicationError, NetworkError, UnexpectedError } from "errors";
+import { chooseCountries } from "quiz";
 
 const baseURL = "https://restcountries.eu/rest/v2";
 
@@ -22,17 +23,6 @@ interface Question {
   answerOptions: string[];
   correctAnswer: string;
 }
-
-interface Country {
-  name: string;
-  capital?: string;
-  flag?: string;
-}
-
-const chooseCountries = (countries: Country[]) => {
-  const numberOfAnswerOptions = 4;
-  return chooseUniqueItems(countries, numberOfAnswerOptions);
-};
 
 const generateQuestion = async (): Promise<Question> => {
   const questionType =
