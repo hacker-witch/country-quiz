@@ -23,6 +23,14 @@ class NetworkError extends ApplicationError {
   }
 }
 
+class UnexpectedError extends ApplicationError {
+  constructor() {
+    super(
+      "There was an unexpected error. Please, try accessing this page again later."
+    );
+  }
+}
+
 const baseURL = "https://restcountries.eu/rest/v2";
 
 enum QuestionType {
@@ -75,7 +83,7 @@ const generateFlagQuestion = async () => {
   const response = await fetch(`${baseURL}/all/?fields=name;flag`);
 
   if (!response.ok) {
-    throw new Error("Response was not ok!");
+    throw new UnexpectedError();
   }
 
   const countries = await response.json();
@@ -100,7 +108,7 @@ const generateCapitalQuestion = async () => {
   const response = await fetch(`${baseURL}/all/?fields=name;capital`);
 
   if (!response.ok) {
-    throw new Error("Response was not ok!");
+    throw new UnexpectedError();
   }
 
   const countries = await response.json();
