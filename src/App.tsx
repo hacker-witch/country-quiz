@@ -15,6 +15,14 @@ class ApplicationError extends Error {
   }
 }
 
+class NetworkError extends ApplicationError {
+  constructor() {
+    super(
+      "There was a network error. Please, try accessing this page again later."
+    );
+  }
+}
+
 const baseURL = "https://restcountries.eu/rest/v2";
 
 enum QuestionType {
@@ -51,18 +59,14 @@ const generateQuestion = async (): Promise<Question> => {
       try {
         return await generateFlagQuestion();
       } catch (error) {
-        throw new Error(
-          "There was a network error. Please, try accessing this page again later."
-        );
+        throw new NetworkError();
       }
 
     case QuestionType.Capital:
       try {
         return await generateCapitalQuestion();
       } catch (error) {
-        throw new Error(
-          "There was a network error. Please, try accessing this page again later."
-        );
+        throw new NetworkError();
       }
   }
 };
