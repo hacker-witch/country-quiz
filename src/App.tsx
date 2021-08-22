@@ -120,7 +120,7 @@ enum QuizStatus {
   GameOver = "GAME_OVER",
 }
 
-export const App = () => {
+const useQuiz = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [currentQuestion, setCurrentQuestion] = useState<string | null>(null);
@@ -174,6 +174,41 @@ export const App = () => {
       setCorrectAnswers(correctAnswers + 1);
     }
   };
+
+  return {
+    isLoading,
+    error,
+    currentQuestion,
+    flag,
+    answerOptions,
+    correctAnswer,
+    chosenAnswer,
+    correctAnswers,
+    quizStatus,
+    startQuiz,
+    finishQuiz,
+    continueQuiz,
+    resetQuiz,
+    answerQuestion,
+  };
+};
+
+export const App = () => {
+  const {
+    isLoading,
+    error,
+    currentQuestion,
+    flag,
+    answerOptions,
+    correctAnswer,
+    chosenAnswer,
+    correctAnswers,
+    quizStatus,
+    finishQuiz,
+    continueQuiz,
+    resetQuiz,
+    answerQuestion,
+  } = useQuiz();
 
   if (isLoading) return <LoadingPage />;
 
