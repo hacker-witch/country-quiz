@@ -1,5 +1,11 @@
 import { useState, useEffect } from "react";
-import { Quiz, QuestionResults, QuizResults, LoadingPage } from "components";
+import {
+  Quiz,
+  QuestionResults,
+  QuizResults,
+  LoadingPage,
+  ErrorPage,
+} from "components";
 import { chooseIndex, chooseUniqueItems } from "utils";
 
 const baseURL = "https://restcountries.eu/rest/v2";
@@ -98,6 +104,7 @@ enum QuizStatus {
 
 export const App = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [currentQuestion, setCurrentQuestion] = useState<string | null>(null);
   const [flag, setFlag] = useState<string | null>(null);
   const [answerOptions, setAnswerOptions] = useState<string[]>([]);
@@ -121,7 +128,7 @@ export const App = () => {
       setChosenAnswer(question.answerOptions[0]);
       question.flag ? setFlag(question.flag) : setFlag(null);
     } catch (error) {
-      console.error(error.message);
+      setError(error.message);
     } finally {
       setIsLoading(false);
     }
@@ -151,6 +158,8 @@ export const App = () => {
   };
 
   if (isLoading) return <LoadingPage />;
+
+  if (error) return <ErrorPage error={error} />;
 
   switch (quizStatus) {
     case QuizStatus.Answering:
