@@ -10,7 +10,7 @@ export const LoadingPage = () => (
 );
 
 const Container = styled.div`
-  height: 449px;
+  height: 28.0625rem;
   display: flex;
   justify-content: center;
   align-items: center;
