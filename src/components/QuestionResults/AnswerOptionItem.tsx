@@ -72,7 +72,7 @@ interface AnswerProps {
 
 const CorrectAnswer = styled(AnswerOption)<AnswerProps>`
   transition-property: color, background-color, border-color;
-  transition-duration: 0.3s;
+  transition-duration: 0.5s;
   color: ${(props) =>
     props.transitionState === "entering" ? "rgba(96, 102, 208, 0.8)" : "#fff"};
   background: ${(props) =>
@@ -85,7 +85,7 @@ const CorrectAnswer = styled(AnswerOption)<AnswerProps>`
 
 const WronglyChosenAnswer = styled(AnswerOption)<AnswerProps>`
   transition-property: color, background-color, border-color;
-  transition-duration: 0.3s;
+  transition-duration: 0.5s;
   color: ${(props) =>
     props.transitionState === "entering" ? "rgba(96, 102, 208, 0.8)" : "#fff"};
   background: ${(props) =>
