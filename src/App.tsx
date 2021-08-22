@@ -7,29 +7,7 @@ import {
   ErrorPage,
 } from "components";
 import { chooseIndex, chooseUniqueItems } from "utils";
-
-class ApplicationError extends Error {
-  constructor(message: string) {
-    super(message);
-    this.name = this.constructor.name;
-  }
-}
-
-class NetworkError extends ApplicationError {
-  constructor() {
-    super(
-      "There was a network error. Please, try accessing this page again later."
-    );
-  }
-}
-
-class UnexpectedError extends ApplicationError {
-  constructor() {
-    super(
-      "There was an unexpected error. Please, try accessing this page again later."
-    );
-  }
-}
+import { ApplicationError, NetworkError, UnexpectedError } from "errors";
 
 const baseURL = "https://restcountries.eu/rest/v2";
 
