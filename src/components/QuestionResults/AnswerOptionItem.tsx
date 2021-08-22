@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useRef } from "react";
 import { TransitionGroup, Transition } from "react-transition-group";
 import styled from "styled-components";
 import { AnswerOption, Letter, Value } from "../AnswerOption";
@@ -40,25 +40,28 @@ interface AnswerResultProps {
   children: ReactNode;
 }
 
-const AnswerResult = ({ isCorrect, children }: AnswerResultProps) => (
-  <TransitionGroup component={null}>
-    <Transition timeout={0} appear>
-      {(state) =>
-        isCorrect ? (
-          <CorrectAnswer as="li" transitionState={state}>
-            {children}
-            <Icon src={correctIcon} alt="This answer is correct!" />
-          </CorrectAnswer>
-        ) : (
-          <WronglyChosenAnswer as="li" transitionState={state}>
-            {children}
-            <Icon src={wrongIcon} alt="You've chosen the wrong answer!" />
-          </WronglyChosenAnswer>
-        )
-      }
-    </Transition>
-  </TransitionGroup>
-);
+const AnswerResult = ({ isCorrect, children }: AnswerResultProps) => {
+  const nodeRef = useRef(null);
+  return (
+    <TransitionGroup component={null}>
+      <Transition nodeRef={nodeRef} timeout={0} appear>
+        {(state) =>
+          isCorrect ? (
+            <CorrectAnswer as="li" transitionState={state}>
+              {children}
+              <Icon src={correctIcon} alt="This answer is correct!" />
+            </CorrectAnswer>
+          ) : (
+            <WronglyChosenAnswer as="li" transitionState={state}>
+              {children}
+              <Icon src={wrongIcon} alt="You've chosen the wrong answer!" />
+            </WronglyChosenAnswer>
+          )
+        }
+      </Transition>
+    </TransitionGroup>
+  );
+};
 
 const Icon = styled.img`
   fill: #fff;
