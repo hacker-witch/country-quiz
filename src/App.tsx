@@ -14,6 +14,22 @@ enum RequestStatus {
   Complete = "COMPLETE",
 }
 
+interface RequestLoading {
+  status: RequestStatus.Loading;
+}
+
+interface RequestError {
+  status: RequestStatus.Error;
+  error: string;
+}
+
+interface RequestComplete<T> {
+  status: RequestStatus.Complete;
+  data: T;
+}
+
+type RequestResult<T> = RequestLoading | RequestComplete<T> | RequestError;
+
 export const App = () => {
   const [countries, setCountries] = useState<Country[]>([]);
   const [status, setStatus] = useState(RequestStatus.Loading);
