@@ -1,12 +1,42 @@
 import { UnexpectedError } from "errors";
 
-const apiRoot = "https://restcountries.eu/rest/v2";
+interface Country {
+  name: string;
+  flag: string;
+  capital: string;
+}
+
+export enum RequestStatus {
+  Loading = "LOADING",
+  Error = "ERROR",
+  Complete = "COMPLETE",
+}
+
+interface RequestLoading {
+  status: RequestStatus.Loading;
+}
+
+interface RequestError {
+  status: RequestStatus.Error;
+  error: string;
+}
+
+interface RequestComplete<T> {
+  status: RequestStatus.Complete;
+  data: T;
+}
+
+type RequestResult<T> = RequestLoading | RequestComplete<T> | RequestError;
+
+export type CountryResults = RequestResult<Country[]>;
 
 type Field = "name" | "flag" | "capital";
 
 interface fetchAllCountriesOptions {
   fields: Field[];
 }
+
+const apiRoot = "https://restcountries.eu/rest/v2";
 
 export const fetchAllCountries = async ({
   fields,

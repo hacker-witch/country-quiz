@@ -1,36 +1,6 @@
 import { useState, useEffect } from "react";
 import { LoadingPage, ErrorPage } from "components";
-import { fetchAllCountries } from "data";
-
-interface Country {
-  name: string;
-  flag: string;
-  capital: string;
-}
-
-enum RequestStatus {
-  Loading = "LOADING",
-  Error = "ERROR",
-  Complete = "COMPLETE",
-}
-
-interface RequestLoading {
-  status: RequestStatus.Loading;
-}
-
-interface RequestError {
-  status: RequestStatus.Error;
-  error: string;
-}
-
-interface RequestComplete<T> {
-  status: RequestStatus.Complete;
-  data: T;
-}
-
-type RequestResult<T> = RequestLoading | RequestComplete<T> | RequestError;
-
-type CountryResults = RequestResult<Country[]>;
+import { fetchAllCountries, CountryResults, RequestStatus } from "data";
 
 export const App = () => {
   const [countryResults, setCountryResults] = useState<CountryResults>({
