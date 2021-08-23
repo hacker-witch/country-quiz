@@ -30,28 +30,33 @@ interface RequestComplete<T> {
 
 type RequestResult<T> = RequestLoading | RequestComplete<T> | RequestError;
 
+type CountryResults = RequestResult<Country[]>;
+
 export const App = () => {
-  const [countries, setCountries] = useState<Country[]>([]);
-  const [status, setStatus] = useState(RequestStatus.Loading);
-  const [error, setError] = useState<string | null>(null);
+  const [countryResults, setCountryResults] = useState<CountryResults>({
+    status: RequestStatus.Loading,
+  });
 
   useEffect(() => {
     fetchAllCountries({ fields: ["name", "capital", "flag"] })
       .then((countries) => {
-        setCountries(countries);
-        setStatus(RequestStatus.Complete);
+        setCountryResults({ data: countries, status: RequestStatus.Complete });
       })
       .catch((error) => {
-        setStatus(RequestStatus.Error);
-        setError(error.message);
+        setCountryResults({
+          error: error.message,
+          status: RequestStatus.Error,
+        });
       });
   }, []);
 
-  switch (status) {
+  switch (countryResults.status) {
     case RequestStatus.Loading:
       return <LoadingPage />;
+
     case RequestStatus.Error:
-      return <ErrorPage error={error!} />;
+      return <ErrorPage error={countryResults.error} />;
+
     case RequestStatus.Complete:
       return null;
   }
