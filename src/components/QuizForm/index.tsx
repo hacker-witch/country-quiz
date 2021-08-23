@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Question } from "../Question";
 import { AnswerOptionsGroup } from "../AnswerOptionsGroup";
 import { Button } from "../Button";
-import { AnswerOptionField } from "../Quiz/AnswerOptionField";
+import { AnswerOptionField } from "./AnswerOptionField";
 
 const letters = ["a", "b", "c", "d"];
 
