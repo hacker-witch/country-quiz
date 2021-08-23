@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
 import { LoadingPage, ErrorPage } from "components";
-import { fetchAllCountries, Country } from "data";
+import { fetchAllCountries } from "data";
+
+interface Country {
+  name: string;
+  flag: string;
+  capital: string;
+}
 
 enum RequestStatus {
   Loading = "LOADING",
