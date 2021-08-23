@@ -6,12 +6,12 @@ const chooseCountries = (countries: Country[]) => {
   return chooseUniqueItems(countries, numberOfAnswerOptions);
 };
 
-enum QuestionType {
+enum QuestionTheme {
   Flag = "FLAG",
   Capital = "CAPITAL",
 }
 
-const allQuestionTypes = Object.values(QuestionType);
+const allQuestionThemes = Object.values(QuestionTheme);
 
 export interface Question {
   title: string;
@@ -21,17 +21,17 @@ export interface Question {
 }
 
 export const generateQuestionFromCountryList = (countries: Country[]) => {
-  const questionType = chooseItem(allQuestionTypes);
+  const questionTheme = chooseItem(allQuestionThemes);
   const randomCountries = chooseCountries(countries);
   const countryNames = randomCountries.map((country) => country.name);
   const correctCountry = randomCountries[chooseIndex(randomCountries)];
 
   const question = {
     flag:
-      questionType === QuestionType.Capital ? undefined : correctCountry.flag,
+      questionTheme === QuestionTheme.Capital ? undefined : correctCountry.flag,
     answerOptions: countryNames,
     title:
-      questionType === QuestionType.Capital
+      questionTheme === QuestionTheme.Capital
         ? `${correctCountry.capital} is the capital of`
         : "Which country does this flag belong to?",
     correctAnswer: correctCountry.name,
