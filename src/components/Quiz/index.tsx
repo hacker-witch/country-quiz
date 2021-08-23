@@ -21,7 +21,9 @@ export const Quiz = ({ countries }: QuizProps) => {
   const [currentQuestion, setCurrentQuestion] = useState(
     initialCurrentQuestion
   );
-  const [chosenAnswer, setChosenAnswer] = useState<string | null>(null);
+  const [chosenAnswer, setChosenAnswer] = useState(
+    initialCurrentQuestion.answerOptions[0]
+  );
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [quizStatus, setQuizStatus] = useState(QuizStatus.Answering);
 
@@ -61,7 +63,7 @@ export const Quiz = ({ countries }: QuizProps) => {
             flag={currentQuestion.flag}
             question={currentQuestion.title}
             answerOptions={currentQuestion.answerOptions}
-            chosenAnswer={chosenAnswer!}
+            chosenAnswer={chosenAnswer}
             answerQuestion={answerQuestion}
           />
         </Page>
@@ -73,7 +75,7 @@ export const Quiz = ({ countries }: QuizProps) => {
           question={currentQuestion.title}
           flag={currentQuestion.flag ? currentQuestion.flag : undefined}
           answerOptions={currentQuestion.answerOptions}
-          chosenAnswer={chosenAnswer!}
+          chosenAnswer={chosenAnswer}
           correctAnswer={currentQuestion.correctAnswer}
           finishQuiz={finishQuiz}
           continueQuiz={continueQuiz}
