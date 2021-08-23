@@ -5,9 +5,9 @@ export const chooseUniqueItems = <T>(array: T[], quantity: number) => {
 
   while (chosenItems.length < quantity) {
     const index = chooseIndex(array);
-    const country = array[index];
-    if (!chosenItems.includes(country)) {
-      chosenItems.push(country);
+    const item = array[index];
+    if (!chosenItems.includes(item)) {
+      chosenItems.push(item);
     }
   }
 
