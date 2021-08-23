@@ -14,16 +14,13 @@ export const App = () => {
         setCountryResults({ data: countries, status: RequestStatus.Complete });
       })
       .catch((error) => {
-        if (error instanceof ApplicationError) {
-          setCountryResults({
-            error: error.message,
-            status: RequestStatus.Error,
-          });
-          return;
-        }
+        const errorMessage =
+          error instanceof ApplicationError
+            ? error.message
+            : new NetworkError().message;
 
         setCountryResults({
-          error: new NetworkError().message,
+          error: errorMessage,
           status: RequestStatus.Error,
         });
       });
