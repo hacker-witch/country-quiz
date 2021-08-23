@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { LoadingPage, ErrorPage, Quiz } from "components";
 import { fetchAllCountries, CountryResults, RequestStatus } from "data";
+import { ApplicationError, NetworkError } from "errors";
 
 export const App = () => {
   const [countryResults, setCountryResults] = useState<CountryResults>({
@@ -13,8 +14,16 @@ export const App = () => {
         setCountryResults({ data: countries, status: RequestStatus.Complete });
       })
       .catch((error) => {
+        if (error instanceof ApplicationError) {
+          setCountryResults({
+            error: error.message,
+            status: RequestStatus.Error,
+          });
+          return;
+        }
+
         setCountryResults({
-          error: error.message,
+          error: new NetworkError().message,
           status: RequestStatus.Error,
         });
       });
