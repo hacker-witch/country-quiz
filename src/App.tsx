@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { LoadingPage, ErrorPage } from "components";
+import { LoadingPage, ErrorPage, Quiz } from "components";
 import { fetchAllCountries, CountryResults, RequestStatus } from "data";
 
 export const App = () => {
@@ -28,6 +28,6 @@ export const App = () => {
       return <ErrorPage error={countryResults.error} />;
 
     case RequestStatus.Complete:
-      return null;
+      return <Quiz countries={countryResults.data} />;
   }
 };

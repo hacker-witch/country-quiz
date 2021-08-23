@@ -5,38 +5,105 @@ import { Question } from "../Question";
 import { AnswerOptionsGroup } from "../AnswerOptionsGroup";
 import { Button } from "../Button";
 import { AnswerOptionField } from "./AnswerOptionField";
+import { QuestionResults } from "../QuestionResults";
+import { QuizResults } from "../QuizResults";
+import { Country } from "data";
+import { generateQuestionFromCountryList } from "quiz";
 
 const letters = ["a", "b", "c", "d"];
 
+enum QuizStatus {
+  Answering = "ANSWERING",
+  ViewingQuestionResults = "VIEWING_QUESTION_RESULTS",
+  GameOver = "GAME_OVER",
+}
+
 interface QuizProps {
+  countries: Country[];
+}
+
+export const Quiz = ({ countries }: QuizProps) => {
+  const initialCurrentQuestion = generateQuestionFromCountryList(countries);
+  const [currentQuestion, setCurrentQuestion] = useState(
+    initialCurrentQuestion
+  );
+  const [chosenAnswer, setChosenAnswer] = useState<string | null>(null);
+  const [correctAnswers, setCorrectAnswers] = useState(0);
+  const [quizStatus, setQuizStatus] = useState(QuizStatus.Answering);
+
+  const loadNextQuestion = () => {
+    const question = generateQuestionFromCountryList(countries);
+    setCurrentQuestion(question);
+    setChosenAnswer(question.answerOptions[0]);
+  };
+
+  const finishQuiz = () => setQuizStatus(QuizStatus.GameOver);
+
+  const continueQuiz = () => {
+    setQuizStatus(QuizStatus.Answering);
+    loadNextQuestion();
+  };
+
+  const resetQuiz = () => {
+    setChosenAnswer(null);
+    setCorrectAnswers(0);
+    setQuizStatus(QuizStatus.Answering);
+    loadNextQuestion();
+  };
+
+  const answerQuestion = (answer: string) => {
+    setChosenAnswer(answer);
+    setQuizStatus(QuizStatus.ViewingQuestionResults);
+
+    if (answer === currentQuestion.correctAnswer) {
+      setCorrectAnswers(correctAnswers + 1);
+    }
+  };
+
+  switch (quizStatus) {
+    case QuizStatus.Answering:
+      return (
+        <Page>
+          <QuizForm
+            flag={currentQuestion.flag}
+            question={currentQuestion.title}
+            answerOptions={currentQuestion.answerOptions}
+            chosenAnswer={chosenAnswer!}
+            answerQuestion={answerQuestion}
+          />
+        </Page>
+      );
+
+    case QuizStatus.ViewingQuestionResults:
+      return (
+        <QuestionResults
+          question={currentQuestion.title}
+          flag={currentQuestion.flag ? currentQuestion.flag : undefined}
+          answerOptions={currentQuestion.answerOptions}
+          chosenAnswer={chosenAnswer!}
+          correctAnswer={currentQuestion.correctAnswer}
+          finishQuiz={finishQuiz}
+          continueQuiz={continueQuiz}
+        />
+      );
+
+    case QuizStatus.GameOver:
+      return (
+        <QuizResults correctAnswers={correctAnswers} resetQuiz={resetQuiz} />
+      );
+
+    default:
+      return null;
+  }
+};
+
+interface QuizFormProps {
   flag?: string;
   question: string;
   answerOptions: string[];
   chosenAnswer: string;
   answerQuestion: (answer: string) => void;
 }
-
-export const Quiz = ({
-  flag,
-  question,
-  answerOptions,
-  chosenAnswer,
-  answerQuestion,
-}: QuizProps) => {
-  return (
-    <Page>
-      <QuizForm
-        flag={flag}
-        question={question}
-        answerOptions={answerOptions}
-        chosenAnswer={chosenAnswer}
-        answerQuestion={answerQuestion}
-      />
-    </Page>
-  );
-};
-
-interface QuizFormProps extends QuizProps {}
 
 const QuizForm = ({
   flag,
