@@ -1,5 +1,5 @@
 import { fetchAllCountries } from "./countriesAPIClient";
-import { chooseUniqueItems, chooseIndex } from "utils";
+import { chooseUniqueItems, chooseIndex, chooseItem } from "utils";
 import { ApplicationError, NetworkError } from "errors";
 
 interface Country {
@@ -18,6 +18,8 @@ enum QuestionType {
   Capital = "CAPITAL",
 }
 
+const allQuestionTypes = Object.values(QuestionType);
+
 interface Question {
   title: string;
   flag?: string;
@@ -26,10 +28,7 @@ interface Question {
 }
 
 export const generateQuestion = async (): Promise<Question> => {
-  const questionType =
-    Math.floor(Math.random() * 2) === 0
-      ? QuestionType.Flag
-      : QuestionType.Capital;
+  const questionType = chooseItem(allQuestionTypes);
 
   switch (questionType) {
     case QuestionType.Flag:
