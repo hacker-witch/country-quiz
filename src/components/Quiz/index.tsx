@@ -23,6 +23,28 @@ export const Quiz = ({
   chosenAnswer,
   answerQuestion,
 }: QuizProps) => {
+  return (
+    <Page>
+      <QuizForm
+        flag={flag}
+        question={question}
+        answerOptions={answerOptions}
+        chosenAnswer={chosenAnswer}
+        answerQuestion={answerQuestion}
+      />
+    </Page>
+  );
+};
+
+interface QuizFormProps extends QuizProps {}
+
+const QuizForm = ({
+  flag,
+  question,
+  answerOptions,
+  chosenAnswer,
+  answerQuestion,
+}: QuizFormProps) => {
   const [checkedAnswer, setCheckedAnswer] = useState(chosenAnswer);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -31,27 +53,25 @@ export const Quiz = ({
   };
 
   return (
-    <Page>
-      <form onSubmit={handleSubmit}>
-        {flag ? <Flag src={flag} alt="" /> : null}
-        <Fieldset>
-          <Question as="legend">{question}</Question>
-          <AnswerOptionsGroup>
-            {answerOptions.map((option, index) => (
-              <AnswerOptionField
-                key={index}
-                letter={letters[index]}
-                value={option}
-                isChecked={option === checkedAnswer}
-                onChange={(_) => setCheckedAnswer(option)}
-              />
-            ))}
-          </AnswerOptionsGroup>
-        </Fieldset>
+    <form onSubmit={handleSubmit}>
+      {flag ? <Flag src={flag} alt="" /> : null}
+      <Fieldset>
+        <Question as="legend">{question}</Question>
+        <AnswerOptionsGroup>
+          {answerOptions.map((option, index) => (
+            <AnswerOptionField
+              key={index}
+              letter={letters[index]}
+              value={option}
+              isChecked={option === checkedAnswer}
+              onChange={(_) => setCheckedAnswer(option)}
+            />
+          ))}
+        </AnswerOptionsGroup>
+      </Fieldset>
 
-        <SubmitAnswerButton type="submit">Submit</SubmitAnswerButton>
-      </form>
-    </Page>
+      <SubmitAnswerButton type="submit">Submit</SubmitAnswerButton>
+    </form>
   );
 };
 
