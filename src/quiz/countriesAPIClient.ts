@@ -1,6 +1,6 @@
 import { UnexpectedError } from "errors";
 
-const baseURL = "https://restcountries.eu/rest/v2";
+const apiRoot = "https://restcountries.eu/rest/v2";
 
 type Field = "name" | "flag" | "capital";
 
@@ -9,7 +9,7 @@ interface fetchAllOptions {
 }
 
 export const fetchAllCountries = async ({ fields }: fetchAllOptions) => {
-  const url = addFieldsToUrl(`${baseURL}/all`, fields);
+  const url = addFieldsToUrl(`${apiRoot}/all`, fields);
   const response = await fetch(url);
 
   if (!response.ok) {
