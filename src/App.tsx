@@ -6,7 +6,8 @@ import {
   LoadingPage,
   ErrorPage,
 } from "components";
-import { generateQuestion, Question } from "quiz";
+import { generateQuestionFromCountryList, Question } from "quiz";
+import { fetchAllCountries } from "data";
 
 enum QuizStatus {
   Answering = "ANSWERING",
@@ -30,7 +31,10 @@ export const App = () => {
     setIsLoading(true);
 
     try {
-      const question = await generateQuestion();
+      const countries = await fetchAllCountries({
+        fields: ["name", "capital", "flag"],
+      });
+      const question = generateQuestionFromCountryList(countries);
       setCurrentQuestion(question);
       setChosenAnswer(question.answerOptions[0]);
     } catch (error) {
