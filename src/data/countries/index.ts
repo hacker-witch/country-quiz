@@ -1,6 +1,6 @@
 import { UnexpectedError } from "errors";
 
-interface Country {
+export interface Country {
   name: string;
   flag: string;
   capital: string;
