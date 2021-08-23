@@ -39,7 +39,6 @@ export const Quiz = ({ countries }: QuizProps) => {
   };
 
   const resetQuiz = () => {
-    setChosenAnswer(null);
     setCorrectAnswers(0);
     setQuizStatus(QuizStatus.Answering);
     loadNextQuestion();
