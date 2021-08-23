@@ -1,107 +1,36 @@
 import { useState, useEffect } from "react";
-import {
-  Quiz,
-  QuestionResults,
-  QuizResults,
-  LoadingPage,
-  ErrorPage,
-} from "components";
-import { generateQuestionFromCountryList, Question } from "quiz";
-import { fetchAllCountries } from "data";
+import { LoadingPage, ErrorPage } from "components";
+import { fetchAllCountries, Country } from "data";
 
-enum QuizStatus {
-  Answering = "ANSWERING",
-  ViewingQuestionResults = "VIEWING_QUESTION_RESULTS",
-  GameOver = "GAME_OVER",
+enum RequestStatus {
+  Loading = "LOADING",
+  Error = "ERROR",
+  Complete = "COMPLETE",
 }
 
 export const App = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [countries, setCountries] = useState<Country[]>([]);
+  const [status, setStatus] = useState(RequestStatus.Loading);
   const [error, setError] = useState<string | null>(null);
-  const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
-  const [chosenAnswer, setChosenAnswer] = useState<string | null>(null);
-  const [correctAnswers, setCorrectAnswers] = useState(0);
-  const [quizStatus, setQuizStatus] = useState(QuizStatus.Answering);
 
   useEffect(() => {
-    loadNextQuestion();
+    fetchAllCountries({ fields: ["name", "capital", "flag"] })
+      .then((countries) => {
+        setCountries(countries);
+        setStatus(RequestStatus.Complete);
+      })
+      .catch((error) => {
+        setStatus(RequestStatus.Error);
+        setError(error.message);
+      });
   }, []);
 
-  const loadNextQuestion = async () => {
-    setIsLoading(true);
-
-    try {
-      const countries = await fetchAllCountries({
-        fields: ["name", "capital", "flag"],
-      });
-      const question = generateQuestionFromCountryList(countries);
-      setCurrentQuestion(question);
-      setChosenAnswer(question.answerOptions[0]);
-    } catch (error) {
-      setError(error.message);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const finishQuiz = () => setQuizStatus(QuizStatus.GameOver);
-
-  const continueQuiz = () => {
-    setQuizStatus(QuizStatus.Answering);
-    loadNextQuestion();
-  };
-
-  const resetQuiz = () => {
-    setChosenAnswer(null);
-    setCorrectAnswers(0);
-    setQuizStatus(QuizStatus.Answering);
-    loadNextQuestion();
-  };
-
-  const answerQuestion = (answer: string) => {
-    setChosenAnswer(answer);
-    setQuizStatus(QuizStatus.ViewingQuestionResults);
-
-    if (answer === currentQuestion!.correctAnswer) {
-      setCorrectAnswers(correctAnswers + 1);
-    }
-  };
-
-  if (isLoading) return <LoadingPage />;
-
-  if (error) return <ErrorPage error={error} />;
-
-  switch (quizStatus) {
-    case QuizStatus.Answering:
-      return (
-        <Quiz
-          question={currentQuestion!.title}
-          flag={currentQuestion!.flag ? currentQuestion!.flag : undefined}
-          answerOptions={currentQuestion!.answerOptions}
-          chosenAnswer={chosenAnswer!}
-          answerQuestion={answerQuestion}
-        />
-      );
-
-    case QuizStatus.ViewingQuestionResults:
-      return (
-        <QuestionResults
-          question={currentQuestion!.title}
-          flag={currentQuestion!.flag ? currentQuestion!.flag : undefined}
-          answerOptions={currentQuestion!.answerOptions}
-          chosenAnswer={chosenAnswer!}
-          correctAnswer={currentQuestion!.correctAnswer}
-          finishQuiz={finishQuiz}
-          continueQuiz={continueQuiz}
-        />
-      );
-
-    case QuizStatus.GameOver:
-      return (
-        <QuizResults correctAnswers={correctAnswers} resetQuiz={resetQuiz} />
-      );
-
-    default:
+  switch (status) {
+    case RequestStatus.Loading:
+      return <LoadingPage />;
+    case RequestStatus.Error:
+      return <ErrorPage error={error!} />;
+    case RequestStatus.Complete:
       return null;
   }
 };
