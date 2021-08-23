@@ -4,11 +4,13 @@ const apiRoot = "https://restcountries.eu/rest/v2";
 
 type Field = "name" | "flag" | "capital";
 
-interface fetchAllOptions {
+interface fetchAllCountriesOptions {
   fields: Field[];
 }
 
-export const fetchAllCountries = async ({ fields }: fetchAllOptions) => {
+export const fetchAllCountries = async ({
+  fields,
+}: fetchAllCountriesOptions) => {
   const url = addFieldsToUrl(`${apiRoot}/all`, fields);
   const response = await fetch(url);
 

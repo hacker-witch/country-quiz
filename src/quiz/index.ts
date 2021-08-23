@@ -1,4 +1,4 @@
-import { fetchAllCountries } from "./countriesAPIClient";
+import { fetchAllCountries } from "data";
 import { chooseUniqueItems, chooseIndex, chooseItem } from "utils";
 import { ApplicationError, NetworkError } from "errors";
 
