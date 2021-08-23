@@ -1,10 +1,5 @@
 import { chooseUniqueItems, chooseIndex, chooseItem } from "utils";
-
-interface Country {
-  name: string;
-  capital?: string;
-  flag?: string;
-}
+import { Country } from "data";
 
 const chooseCountries = (countries: Country[]) => {
   const numberOfAnswerOptions = 4;
@@ -25,9 +20,7 @@ export interface Question {
   correctAnswer: string;
 }
 
-export const generateQuestionFromCountryList = (
-  countries: Required<Country>[]
-) => {
+export const generateQuestionFromCountryList = (countries: Country[]) => {
   const questionType = chooseItem(allQuestionTypes);
   const randomCountries = chooseCountries(countries);
   const countryNames = randomCountries.map((country) => country.name);
