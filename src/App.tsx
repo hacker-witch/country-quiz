@@ -26,10 +26,10 @@ export const App = () => {
   const [quizStatus, setQuizStatus] = useState(QuizStatus.Answering);
 
   useEffect(() => {
-    startQuiz();
+    loadNextQuestion();
   }, []);
 
-  const startQuiz = async () => {
+  const loadNextQuestion = async () => {
     setIsLoading(true);
 
     try {
@@ -50,14 +50,14 @@ export const App = () => {
 
   const continueQuiz = () => {
     setQuizStatus(QuizStatus.Answering);
-    startQuiz();
+    loadNextQuestion();
   };
 
   const resetQuiz = () => {
     setChosenAnswer(null);
     setCorrectAnswers(0);
     setQuizStatus(QuizStatus.Answering);
-    startQuiz();
+    loadNextQuestion();
   };
 
   const answerQuestion = (answer: string) => {
