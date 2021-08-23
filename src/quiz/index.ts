@@ -20,7 +20,7 @@ enum QuestionType {
 
 const allQuestionTypes = Object.values(QuestionType);
 
-interface Question {
+export interface Question {
   title: string;
   flag?: string;
   answerOptions: string[];

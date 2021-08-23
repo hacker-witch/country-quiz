@@ -6,7 +6,7 @@ import {
   LoadingPage,
   ErrorPage,
 } from "components";
-import { generateQuestion } from "quiz";
+import { generateQuestion, Question } from "quiz";
 
 enum QuizStatus {
   Answering = "ANSWERING",
@@ -17,10 +17,7 @@ enum QuizStatus {
 export const App = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [currentQuestion, setCurrentQuestion] = useState<string | null>(null);
-  const [flag, setFlag] = useState<string | null>(null);
-  const [answerOptions, setAnswerOptions] = useState<string[]>([]);
-  const [correctAnswer, setCorrectAnswer] = useState<string | null>(null);
+  const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
   const [chosenAnswer, setChosenAnswer] = useState<string | null>(null);
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [quizStatus, setQuizStatus] = useState(QuizStatus.Answering);
@@ -34,11 +31,8 @@ export const App = () => {
 
     try {
       const question = await generateQuestion();
-      setAnswerOptions(question.answerOptions);
-      setCurrentQuestion(question.title);
-      setCorrectAnswer(question.correctAnswer);
+      setCurrentQuestion(question);
       setChosenAnswer(question.answerOptions[0]);
-      question.flag ? setFlag(question.flag) : setFlag(null);
     } catch (error) {
       setError(error.message);
     } finally {
@@ -64,7 +58,7 @@ export const App = () => {
     setChosenAnswer(answer);
     setQuizStatus(QuizStatus.ViewingQuestionResults);
 
-    if (answer === correctAnswer) {
+    if (answer === currentQuestion!.correctAnswer) {
       setCorrectAnswers(correctAnswers + 1);
     }
   };
@@ -77,9 +71,9 @@ export const App = () => {
     case QuizStatus.Answering:
       return (
         <Quiz
-          question={currentQuestion!}
-          flag={flag ? flag : undefined}
-          answerOptions={answerOptions}
+          question={currentQuestion!.title}
+          flag={currentQuestion!.flag ? currentQuestion!.flag : undefined}
+          answerOptions={currentQuestion!.answerOptions}
           chosenAnswer={chosenAnswer!}
           answerQuestion={answerQuestion}
         />
@@ -88,11 +82,11 @@ export const App = () => {
     case QuizStatus.ViewingQuestionResults:
       return (
         <QuestionResults
-          question={currentQuestion!}
-          flag={flag ? flag : undefined}
-          answerOptions={answerOptions}
+          question={currentQuestion!.title}
+          flag={currentQuestion!.flag ? currentQuestion!.flag : undefined}
+          answerOptions={currentQuestion!.answerOptions}
           chosenAnswer={chosenAnswer!}
-          correctAnswer={correctAnswer!}
+          correctAnswer={currentQuestion!.correctAnswer}
           finishQuiz={finishQuiz}
           continueQuiz={continueQuiz}
         />
