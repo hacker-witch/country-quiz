@@ -1,5 +1,6 @@
+import { fetchAllCountries } from "./countriesAPIClient";
 import { chooseUniqueItems, chooseIndex } from "utils";
-import { ApplicationError, NetworkError, UnexpectedError } from "errors";
+import { ApplicationError, NetworkError } from "errors";
 
 interface Country {
   name: string;
@@ -11,8 +12,6 @@ const chooseCountries = (countries: Country[]) => {
   const numberOfAnswerOptions = 4;
   return chooseUniqueItems(countries, numberOfAnswerOptions);
 };
-
-const baseURL = "https://restcountries.eu/rest/v2";
 
 enum QuestionType {
   Flag = "FLAG",
@@ -58,18 +57,9 @@ export const generateQuestion = async (): Promise<Question> => {
 };
 
 const generateFlagQuestion = async () => {
-  const response = await fetch(`${baseURL}/all/?fields=name;flag`);
-
-  if (!response.ok) {
-    throw new UnexpectedError();
-  }
-
-  const countries = await response.json();
-
+  const countries = await fetchAllCountries({ fields: ["name", "flag"] });
   const randomCountries = chooseCountries(countries);
-
   const countryNames = randomCountries.map((country) => country.name);
-
   const correctCountry = randomCountries[chooseIndex(randomCountries)];
 
   const question = {
@@ -83,18 +73,9 @@ const generateFlagQuestion = async () => {
 };
 
 const generateCapitalQuestion = async () => {
-  const response = await fetch(`${baseURL}/all/?fields=name;capital`);
-
-  if (!response.ok) {
-    throw new UnexpectedError();
-  }
-
-  const countries = await response.json();
-
+  const countries = await fetchAllCountries({ fields: ["name", "capital"] });
   const randomCountries = chooseCountries(countries);
-
   const countryNames = randomCountries.map((country) => country.name);
-
   const correctCountry = randomCountries[chooseIndex(randomCountries)];
 
   const question = {
