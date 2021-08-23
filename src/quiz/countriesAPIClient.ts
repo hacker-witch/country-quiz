@@ -9,10 +9,7 @@ interface fetchAllOptions {
 }
 
 export const fetchAllCountries = async ({ fields }: fetchAllOptions) => {
-  const url = fields.reduce(
-    (url, field) => url + field + ";",
-    `${baseURL}/all/?fields=`
-  );
+  const url = addFieldsToUrl(`${baseURL}/all`, fields);
   const response = await fetch(url);
 
   if (!response.ok) {
@@ -22,3 +19,6 @@ export const fetchAllCountries = async ({ fields }: fetchAllOptions) => {
   const countries = await response.json();
   return countries;
 };
+
+const addFieldsToUrl = (baseURL: string, fields: Field[]) =>
+  fields.reduce((url, field) => url + field + ";", `${baseURL}?fields=`);
