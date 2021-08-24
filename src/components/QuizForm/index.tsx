@@ -4,6 +4,7 @@ import { QuestionTitle } from "../QuestionTitle";
 import { AnswerOptionsGroup } from "../AnswerOptionsGroup";
 import { Button } from "../Button";
 import { AnswerOptionField } from "./AnswerOptionField";
+import { Flag } from "../Flag";
 
 const letters = ["a", "b", "c", "d"];
 
@@ -54,14 +55,6 @@ export const QuizForm = ({
 
 const Fieldset = styled.fieldset`
   border: none;
-`;
-
-const Flag = styled.img`
-  margin-bottom: 1.75rem;
-  width: 5.25rem;
-  height: 3.375rem;
-  border-radius: 0.25rem;
-  box-shadow: 0 0.25rem 1.5rem 0 #0000001a;
 `;
 
 const SubmitAnswerButton = styled(Button)`
