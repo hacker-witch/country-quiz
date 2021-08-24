@@ -18,6 +18,7 @@ export const Quiz = ({ countries }: QuizProps) => {
     finishQuiz,
     continueQuiz,
     resetQuiz,
+    chooseAnswer,
     answerQuestion,
     QuizStatus,
   } = useQuiz(countries);
@@ -31,6 +32,7 @@ export const Quiz = ({ countries }: QuizProps) => {
             question={currentQuestion.title}
             answerOptions={currentQuestion.answerOptions}
             chosenAnswer={chosenAnswer}
+            chooseAnswer={chooseAnswer}
             answerQuestion={answerQuestion}
           />
         </Page>

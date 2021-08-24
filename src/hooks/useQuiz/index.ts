@@ -38,11 +38,14 @@ export const useQuiz = (countries: Country[]) => {
     loadNextQuestion();
   };
 
-  const answerQuestion = (answer: string) => {
+  const chooseAnswer = (answer: string) => {
     setChosenAnswer(answer);
+  };
+
+  const answerQuestion = () => {
     setQuizStatus(QuizStatus.ViewingQuestionResults);
 
-    if (answer === currentQuestion.correctAnswer) {
+    if (chosenAnswer === currentQuestion.correctAnswer) {
       setCorrectAnswers(correctAnswers + 1);
     }
   };
@@ -55,6 +58,7 @@ export const useQuiz = (countries: Country[]) => {
     finishQuiz,
     continueQuiz,
     resetQuiz,
+    chooseAnswer,
     answerQuestion,
     QuizStatus,
   };

@@ -1,4 +1,4 @@
-import { useState, FormEvent } from "react";
+import { FormEvent } from "react";
 import styled from "styled-components";
 import { QuestionTitle } from "../QuestionTitle";
 import { AnswerOptionsGroup } from "../AnswerOptionsGroup";
@@ -12,7 +12,8 @@ interface QuizFormProps {
   question: string;
   answerOptions: string[];
   chosenAnswer: string;
-  answerQuestion: (answer: string) => void;
+  chooseAnswer: (answer: string) => void;
+  answerQuestion: () => void;
 }
 
 export const QuizForm = ({
@@ -20,13 +21,12 @@ export const QuizForm = ({
   question,
   answerOptions,
   chosenAnswer,
+  chooseAnswer,
   answerQuestion,
 }: QuizFormProps) => {
-  const [checkedAnswer, setCheckedAnswer] = useState(chosenAnswer);
-
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    answerQuestion(checkedAnswer);
+    answerQuestion();
   };
 
   return (
@@ -40,8 +40,8 @@ export const QuizForm = ({
               key={index}
               letter={letters[index]}
               value={option}
-              isChecked={option === checkedAnswer}
-              onChange={(_) => setCheckedAnswer(option)}
+              isChecked={option === chosenAnswer}
+              onChange={(_) => chooseAnswer(option)}
             />
           ))}
         </AnswerOptionsGroup>
