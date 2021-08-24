@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.js": "/country-quiz/static/js/main.c49c970e.chunk.js",
+    "main.js.map": "/country-quiz/static/js/main.c49c970e.chunk.js.map",
+    "runtime-main.js": "/country-quiz/static/js/runtime-main.9a30bb68.js",
+    "runtime-main.js.map": "/country-quiz/static/js/runtime-main.9a30bb68.js.map",
+    "static/js/2.eb029f21.chunk.js": "/country-quiz/static/js/2.eb029f21.chunk.js",
+    "static/js/2.eb029f21.chunk.js.map": "/country-quiz/static/js/2.eb029f21.chunk.js.map",
+    "static/js/3.f7d45e0f.chunk.js": "/country-quiz/static/js/3.f7d45e0f.chunk.js",
+    "static/js/3.f7d45e0f.chunk.js.map": "/country-quiz/static/js/3.f7d45e0f.chunk.js.map",
+    "index.html": "/country-quiz/index.html",
+    "static/js/2.eb029f21.chunk.js.LICENSE.txt": "/country-quiz/static/js/2.eb029f21.chunk.js.LICENSE.txt",
+    "static/media/background.41dbc550.png": "/country-quiz/static/media/background.41dbc550.png",
+    "static/media/check-circle-rounded-icon.32602fee.svg": "/country-quiz/static/media/check-circle-rounded-icon.32602fee.svg",
+    "static/media/header-illustration.160d80a0.svg": "/country-quiz/static/media/header-illustration.160d80a0.svg",
+    "static/media/highlight-off-rounded-icon.f4b56689.svg": "/country-quiz/static/media/highlight-off-rounded-icon.f4b56689.svg",
+    "static/media/results-illustration.d76bfdf8.svg": "/country-quiz/static/media/results-illustration.d76bfdf8.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9a30bb68.js",
+    "static/js/2.eb029f21.chunk.js",
+    "static/js/main.c49c970e.chunk.js"
+  ]
+}
