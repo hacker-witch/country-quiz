@@ -1,15 +1,15 @@
 import styled from "styled-components";
 import { Page } from "../Page";
-import { Question } from "../Question";
+import { QuestionTitle } from "../QuestionTitle";
 import { Button } from "../Button";
 import { AnswerOptionsGroup } from "../AnswerOptionsGroup";
 import { AnswerOptionItem } from "./AnswerOptionItem";
-import { Question as IQuestion } from "quiz";
+import { Question } from "quiz";
 
 const letters = ["a", "b", "c", "d"];
 
 interface QuestionResultsProps {
-  question: IQuestion;
+  question: Question;
   chosenAnswer: string;
   finishQuiz: () => void;
   continueQuiz: () => void;
@@ -23,7 +23,7 @@ export const QuestionResults = ({
 }: QuestionResultsProps) => (
   <Page>
     {question.flag ? <Flag src={question.flag} alt="" /> : null}
-    <Question as="div">{question}</Question>
+    <QuestionTitle as="div">{question}</QuestionTitle>
 
     <AnswerOptionsGroup as="ol">
       {question.answerOptions.map((answer, index) => (

@@ -1,6 +1,6 @@
 import { useState, FormEvent } from "react";
 import styled from "styled-components";
-import { Question } from "../Question";
+import { QuestionTitle } from "../QuestionTitle";
 import { AnswerOptionsGroup } from "../AnswerOptionsGroup";
 import { Button } from "../Button";
 import { AnswerOptionField } from "./AnswerOptionField";
@@ -33,7 +33,7 @@ export const QuizForm = ({
     <form onSubmit={handleSubmit}>
       {flag ? <Flag src={flag} alt="" /> : null}
       <Fieldset>
-        <Question as="legend">{question}</Question>
+        <QuestionTitle as="legend">{question}</QuestionTitle>
         <AnswerOptionsGroup>
           {answerOptions.map((option, index) => (
             <AnswerOptionField
