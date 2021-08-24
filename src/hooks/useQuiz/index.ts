@@ -36,6 +36,7 @@ export const useQuiz = (countries: Country[]) => {
 
   const resetQuiz = () => {
     setCorrectAnswers(0);
+    setPastQuestionTitles([]);
     setQuizStatus(QuizStatus.Answering);
     loadNextQuestion();
   };
