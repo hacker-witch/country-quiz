@@ -9,7 +9,7 @@ enum QuizStatus {
 }
 
 export const useQuiz = (countries: Country[]) => {
-  const initialCurrentQuestion = generateQuestionFromCountryList(countries);
+  const initialCurrentQuestion = generateQuestionFromCountryList(countries, []);
   const [currentQuestion, setCurrentQuestion] = useState(
     initialCurrentQuestion
   );
@@ -21,7 +21,7 @@ export const useQuiz = (countries: Country[]) => {
   const [quizStatus, setQuizStatus] = useState(QuizStatus.Answering);
 
   const loadNextQuestion = () => {
-    const question = generateQuestionFromCountryList(countries);
+    const question = generateQuestionFromCountryList(countries, []);
     setPastQuestionTitles([...pastQuestionTitles, question.title]);
     setCurrentQuestion(question);
     setChosenAnswer(question.answerOptions[0]);

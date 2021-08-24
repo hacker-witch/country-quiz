@@ -13,17 +13,24 @@ enum QuestionTheme {
 
 const allQuestionThemes = Object.values(QuestionTheme);
 
-export const generateQuestionFromCountryList = (countries: Country[]) => {
-  const questionTheme = chooseItem(allQuestionThemes);
-  const randomCountries = chooseCountries(countries);
-  const countryNames = randomCountries.map((country) => country.name);
-  const correctCountry = randomCountries[chooseIndex(randomCountries)];
+export const generateQuestionFromCountryList = (
+  countries: Country[],
+  pastQuestionTitles: string[]
+) => {
+  let question;
+  do {
+    const questionTheme = chooseItem(allQuestionThemes);
+    const randomCountries = chooseCountries(countries);
+    const countryNames = randomCountries.map((country) => country.name);
+    const correctCountry = randomCountries[chooseIndex(randomCountries)];
 
-  const question = makeQuestion({
-    questionTheme,
-    country: correctCountry,
-    answerOptions: countryNames,
-  });
+    question = makeQuestion({
+      questionTheme,
+      country: correctCountry,
+      answerOptions: countryNames,
+    });
+  } while (pastQuestionTitles.includes(question.title));
+
   return question;
 };
 
