@@ -21,7 +21,10 @@ export const useQuiz = (countries: Country[]) => {
   const [quizStatus, setQuizStatus] = useState(QuizStatus.Answering);
 
   const loadNextQuestion = () => {
-    const question = generateQuestionFromCountryList(countries, []);
+    const question = generateQuestionFromCountryList(
+      countries,
+      pastQuestionTitles
+    );
     setPastQuestionTitles([...pastQuestionTitles, question.title]);
     setCurrentQuestion(question);
     setChosenAnswer(question.answerOptions[0]);
