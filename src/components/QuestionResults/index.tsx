@@ -4,40 +4,35 @@ import { Question } from "../Question";
 import { Button } from "../Button";
 import { AnswerOptionsGroup } from "../AnswerOptionsGroup";
 import { AnswerOptionItem } from "./AnswerOptionItem";
+import { Question as IQuestion } from "quiz";
 
 const letters = ["a", "b", "c", "d"];
 
 interface QuestionResultsProps {
-  flag?: string;
-  question: string;
-  answerOptions: string[];
+  question: IQuestion;
   chosenAnswer: string;
-  correctAnswer: string;
   finishQuiz: () => void;
   continueQuiz: () => void;
 }
 
 export const QuestionResults = ({
   question,
-  flag,
-  answerOptions,
   chosenAnswer,
-  correctAnswer,
   finishQuiz,
   continueQuiz,
 }: QuestionResultsProps) => (
   <Page>
-    {flag ? <Flag src={flag} alt="" /> : null}
+    {question.flag ? <Flag src={question.flag} alt="" /> : null}
     <Question as="div">{question}</Question>
 
     <AnswerOptionsGroup as="ol">
-      {answerOptions.map((answer, index) => (
+      {question.answerOptions.map((answer, index) => (
         <AnswerOptionItem
           key={index}
           letter={letters[index]}
           value={answer}
           wasChosen={answer === chosenAnswer}
-          isCorrect={answer === correctAnswer}
+          isCorrect={answer === question.correctAnswer}
         />
       ))}
     </AnswerOptionsGroup>
@@ -45,7 +40,7 @@ export const QuestionResults = ({
     <NextQuestionButton
       type="button"
       onClick={(e) =>
-        chosenAnswer === correctAnswer ? continueQuiz() : finishQuiz()
+        chosenAnswer === question.correctAnswer ? continueQuiz() : finishQuiz()
       }
     >
       Next

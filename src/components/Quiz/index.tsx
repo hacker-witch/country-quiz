@@ -72,11 +72,8 @@ export const Quiz = ({ countries }: QuizProps) => {
     case QuizStatus.ViewingQuestionResults:
       return (
         <QuestionResults
-          question={currentQuestion.title}
-          flag={currentQuestion.flag ? currentQuestion.flag : undefined}
-          answerOptions={currentQuestion.answerOptions}
+          question={currentQuestion}
           chosenAnswer={chosenAnswer}
-          correctAnswer={currentQuestion.correctAnswer}
           finishQuiz={finishQuiz}
           continueQuiz={continueQuiz}
         />
