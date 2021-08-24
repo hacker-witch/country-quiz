@@ -19,15 +19,30 @@ export const generateQuestionFromCountryList = (countries: Country[]) => {
   const countryNames = randomCountries.map((country) => country.name);
   const correctCountry = randomCountries[chooseIndex(randomCountries)];
 
-  const question = {
-    flag:
-      questionTheme === QuestionTheme.Capital ? undefined : correctCountry.flag,
+  const question = makeQuestion({
+    questionTheme,
+    country: correctCountry,
     answerOptions: countryNames,
-    title:
-      questionTheme === QuestionTheme.Capital
-        ? `${correctCountry.capital} is the capital of`
-        : "Which country does this flag belong to?",
-    correctAnswer: correctCountry.name,
-  };
+  });
   return question;
 };
+
+interface MakeQuestionOptions {
+  questionTheme: QuestionTheme;
+  country: Country;
+  answerOptions: string[];
+}
+
+const makeQuestion = ({
+  questionTheme,
+  country,
+  answerOptions,
+}: MakeQuestionOptions) => ({
+  flag: questionTheme === QuestionTheme.Capital ? undefined : country.flag,
+  answerOptions,
+  title:
+    questionTheme === QuestionTheme.Capital
+      ? `${country.capital} is the capital of`
+      : "Which country does this flag belong to?",
+  correctAnswer: country.name,
+});
