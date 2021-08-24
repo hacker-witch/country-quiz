@@ -4,7 +4,7 @@ import { QuizForm } from "../QuizForm";
 import { QuestionResults } from "../QuestionResults";
 import { QuizResults } from "../QuizResults";
 import { Country } from "types";
-import { generateQuestionFromCountryList } from "quiz";
+import { generateQuestionFromCountryList } from "utils";
 
 enum QuizStatus {
   Answering = "ANSWERING",

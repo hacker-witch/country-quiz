@@ -4,7 +4,7 @@ import { QuestionTitle } from "../QuestionTitle";
 import { Button } from "../Button";
 import { AnswerOptionsGroup } from "../AnswerOptionsGroup";
 import { AnswerOptionItem } from "./AnswerOptionItem";
-import { Question } from "quiz";
+import { Question } from "utils";
 
 const letters = ["a", "b", "c", "d"];
 
