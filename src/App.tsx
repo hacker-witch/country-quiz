@@ -1,9 +1,8 @@
 import { LoadingPage, ErrorPage, Quiz } from "components";
 import { useFetchCountries } from "hooks";
-import { RequestStatus } from "types";
 
 export const App = () => {
-  const countryResults = useFetchCountries();
+  const { countryResults, RequestStatus } = useFetchCountries();
 
   switch (countryResults.status) {
     case RequestStatus.Loading:

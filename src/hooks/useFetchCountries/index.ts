@@ -26,5 +26,5 @@ export const useFetchCountries = () => {
       });
   }, []);
 
-  return countryResults;
+  return { countryResults, RequestStatus };
 };
