@@ -1,5 +1,6 @@
 import { LoadingPage, ErrorPage, Quiz } from "components";
-import { useFetchCountries, RequestStatus } from "hooks";
+import { useFetchCountries } from "hooks";
+import { RequestStatus } from "types";
 
 export const App = () => {
   const countryResults = useFetchCountries();

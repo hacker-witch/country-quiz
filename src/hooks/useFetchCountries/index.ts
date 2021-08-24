@@ -3,11 +3,10 @@ import {
   fetchAllCountries,
   Country,
   CountryResults,
-  RequestStatus,
 } from "./fetchAllCountries";
+import { RequestStatus } from "types";
 import { ApplicationError, NetworkError } from "errors";
 
-export { RequestStatus };
 export type { Country };
 
 export const useFetchCountries = () => {

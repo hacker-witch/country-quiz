@@ -1,32 +1,11 @@
 import { UnexpectedError } from "errors";
+import { RequestResult } from "types";
 
 export interface Country {
   name: string;
   flag: string;
   capital: string;
 }
-
-export enum RequestStatus {
-  Loading = "LOADING",
-  Error = "ERROR",
-  Complete = "COMPLETE",
-}
-
-interface RequestLoading {
-  status: RequestStatus.Loading;
-}
-
-interface RequestError {
-  status: RequestStatus.Error;
-  error: string;
-}
-
-interface RequestComplete<T> {
-  status: RequestStatus.Complete;
-  data: T;
-}
-
-type RequestResult<T> = RequestLoading | RequestComplete<T> | RequestError;
 
 export type CountryResults = RequestResult<Country[]>;
 
