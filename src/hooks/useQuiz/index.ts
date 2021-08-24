@@ -20,28 +20,31 @@ export const useQuiz = (countries: Country[]) => {
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [quizStatus, setQuizStatus] = useState(QuizStatus.Answering);
 
-  const loadNextQuestion = () => {
+  const finishQuiz = () => setQuizStatus(QuizStatus.GameOver);
+
+  const continueQuiz = () => {
     const question = generateQuestionFromCountryList(
       countries,
       pastQuestionTitles
     );
+
     setPastQuestionTitles([...pastQuestionTitles, question.title]);
     setCurrentQuestion(question);
     setChosenAnswer(question.answerOptions[0]);
-  };
-
-  const finishQuiz = () => setQuizStatus(QuizStatus.GameOver);
-
-  const continueQuiz = () => {
     setQuizStatus(QuizStatus.Answering);
-    loadNextQuestion();
   };
 
   const resetQuiz = () => {
+    const question = generateQuestionFromCountryList(
+      countries,
+      pastQuestionTitles
+    );
+
     setCorrectAnswers(0);
-    setPastQuestionTitles([]);
+    setPastQuestionTitles([question.title]);
+    setCurrentQuestion(question);
+    setChosenAnswer(question.answerOptions[0]);
     setQuizStatus(QuizStatus.Answering);
-    loadNextQuestion();
   };
 
   const chooseAnswer = (answer: string) => {
