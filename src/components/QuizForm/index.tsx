@@ -37,7 +37,7 @@ export const QuizForm = ({
         <AnswerOptionsGroup>
           {answerOptions.map((option, index) => (
             <AnswerOptionField
-              key={index}
+              key={option}
               letter={letters[index]}
               value={option}
               isChecked={option === chosenAnswer}

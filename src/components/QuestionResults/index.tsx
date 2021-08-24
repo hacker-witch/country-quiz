@@ -28,7 +28,7 @@ export const QuestionResults = ({
     <AnswerOptionsGroup as="ol">
       {question.answerOptions.map((answer, index) => (
         <AnswerOptionItem
-          key={index}
+          key={answer}
           letter={letters[index]}
           value={answer}
           wasChosen={answer === chosenAnswer}
