@@ -3,7 +3,7 @@ import { Page } from "../Page";
 import { QuizForm } from "../QuizForm";
 import { QuestionResults } from "../QuestionResults";
 import { QuizResults } from "../QuizResults";
-import { Country } from "utils";
+import { Country } from "hooks";
 import { generateQuestionFromCountryList } from "quiz";
 
 enum QuizStatus {

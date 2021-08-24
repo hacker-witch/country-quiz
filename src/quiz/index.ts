@@ -1,5 +1,5 @@
 import { chooseUniqueItems, chooseIndex, chooseItem } from "utils";
-import { Country } from "utils";
+import { Country } from "hooks";
 
 const chooseCountries = (countries: Country[]) => {
   const numberOfAnswerOptions = 4;
