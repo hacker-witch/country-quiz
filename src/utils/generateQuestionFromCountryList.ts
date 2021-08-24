@@ -19,10 +19,14 @@ export const generateQuestionFromCountryList = (
 ) => {
   let question;
   do {
-    const questionTheme = chooseItem(allQuestionThemes);
     const randomCountries = chooseCountries(countries);
     const countryNames = randomCountries.map((country) => country.name);
     const correctCountry = randomCountries[chooseIndex(randomCountries)];
+
+    const elligibleQuestionThemes = correctCountry.capital
+      ? allQuestionThemes
+      : allQuestionThemes.filter((theme) => theme !== QuestionTheme.Capital);
+    const questionTheme = chooseItem(elligibleQuestionThemes);
 
     question = makeQuestion({
       questionTheme,
