@@ -13,13 +13,6 @@ enum QuestionTheme {
 
 const allQuestionThemes = Object.values(QuestionTheme);
 
-export interface Question {
-  title: string;
-  flag?: string;
-  answerOptions: string[];
-  correctAnswer: string;
-}
-
 export const generateQuestionFromCountryList = (countries: Country[]) => {
   const questionTheme = chooseItem(allQuestionThemes);
   const randomCountries = chooseCountries(countries);
