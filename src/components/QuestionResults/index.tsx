@@ -23,7 +23,7 @@ export const QuestionResults = ({
 }: QuestionResultsProps) => (
   <Page>
     {question.flag ? <Flag src={question.flag} alt="" /> : null}
-    <QuestionTitle as="div">{question}</QuestionTitle>
+    <QuestionTitle as="div">{question.title}</QuestionTitle>
 
     <AnswerOptionsGroup as="ol">
       {question.answerOptions.map((answer, index) => (
