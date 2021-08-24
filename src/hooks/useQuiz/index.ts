@@ -1,0 +1,61 @@
+import { useState } from "react";
+import { generateQuestionFromCountryList } from "utils";
+import { Country } from "types";
+
+enum QuizStatus {
+  Answering = "ANSWERING",
+  ViewingQuestionResults = "VIEWING_QUESTION_RESULTS",
+  GameOver = "GAME_OVER",
+}
+
+export const useQuiz = (countries: Country[]) => {
+  const initialCurrentQuestion = generateQuestionFromCountryList(countries);
+  const [currentQuestion, setCurrentQuestion] = useState(
+    initialCurrentQuestion
+  );
+  const [chosenAnswer, setChosenAnswer] = useState(
+    initialCurrentQuestion.answerOptions[0]
+  );
+  const [correctAnswers, setCorrectAnswers] = useState(0);
+  const [quizStatus, setQuizStatus] = useState(QuizStatus.Answering);
+
+  const loadNextQuestion = () => {
+    const question = generateQuestionFromCountryList(countries);
+    setCurrentQuestion(question);
+    setChosenAnswer(question.answerOptions[0]);
+  };
+
+  const finishQuiz = () => setQuizStatus(QuizStatus.GameOver);
+
+  const continueQuiz = () => {
+    setQuizStatus(QuizStatus.Answering);
+    loadNextQuestion();
+  };
+
+  const resetQuiz = () => {
+    setCorrectAnswers(0);
+    setQuizStatus(QuizStatus.Answering);
+    loadNextQuestion();
+  };
+
+  const answerQuestion = (answer: string) => {
+    setChosenAnswer(answer);
+    setQuizStatus(QuizStatus.ViewingQuestionResults);
+
+    if (answer === currentQuestion.correctAnswer) {
+      setCorrectAnswers(correctAnswers + 1);
+    }
+  };
+
+  return {
+    currentQuestion,
+    chosenAnswer,
+    correctAnswers,
+    quizStatus,
+    finishQuiz,
+    continueQuiz,
+    resetQuiz,
+    answerQuestion,
+    QuizStatus,
+  };
+};

@@ -1,59 +1,26 @@
-import { useState } from "react";
 import { Page } from "../Page";
 import { QuizForm } from "../QuizForm";
 import { QuestionResults } from "../QuestionResults";
 import { QuizResults } from "../QuizResults";
 import { Country } from "types";
-import { generateQuestionFromCountryList } from "utils";
-
-enum QuizStatus {
-  Answering = "ANSWERING",
-  ViewingQuestionResults = "VIEWING_QUESTION_RESULTS",
-  GameOver = "GAME_OVER",
-}
+import { useQuiz } from "hooks";
 
 interface QuizProps {
   countries: Country[];
 }
 
 export const Quiz = ({ countries }: QuizProps) => {
-  const initialCurrentQuestion = generateQuestionFromCountryList(countries);
-  const [currentQuestion, setCurrentQuestion] = useState(
-    initialCurrentQuestion
-  );
-  const [chosenAnswer, setChosenAnswer] = useState(
-    initialCurrentQuestion.answerOptions[0]
-  );
-  const [correctAnswers, setCorrectAnswers] = useState(0);
-  const [quizStatus, setQuizStatus] = useState(QuizStatus.Answering);
-
-  const loadNextQuestion = () => {
-    const question = generateQuestionFromCountryList(countries);
-    setCurrentQuestion(question);
-    setChosenAnswer(question.answerOptions[0]);
-  };
-
-  const finishQuiz = () => setQuizStatus(QuizStatus.GameOver);
-
-  const continueQuiz = () => {
-    setQuizStatus(QuizStatus.Answering);
-    loadNextQuestion();
-  };
-
-  const resetQuiz = () => {
-    setCorrectAnswers(0);
-    setQuizStatus(QuizStatus.Answering);
-    loadNextQuestion();
-  };
-
-  const answerQuestion = (answer: string) => {
-    setChosenAnswer(answer);
-    setQuizStatus(QuizStatus.ViewingQuestionResults);
-
-    if (answer === currentQuestion.correctAnswer) {
-      setCorrectAnswers(correctAnswers + 1);
-    }
-  };
+  const {
+    currentQuestion,
+    chosenAnswer,
+    correctAnswers,
+    quizStatus,
+    finishQuiz,
+    continueQuiz,
+    resetQuiz,
+    answerQuestion,
+    QuizStatus,
+  } = useQuiz(countries);
 
   switch (quizStatus) {
     case QuizStatus.Answering:
