@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { LoadingPage, ErrorPage, Quiz } from "components";
-import { fetchAllCountries, CountryResults, RequestStatus } from "data";
+import { fetchAllCountries, CountryResults, RequestStatus } from "utils";
 import { ApplicationError, NetworkError } from "errors";
 
 export const App = () => {
