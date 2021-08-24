@@ -1,13 +1,7 @@
 import { useState, useEffect } from "react";
-import {
-  fetchAllCountries,
-  Country,
-  CountryResults,
-} from "./fetchAllCountries";
+import { fetchAllCountries, CountryResults } from "./fetchAllCountries";
 import { RequestStatus } from "types";
 import { ApplicationError, NetworkError } from "errors";
-
-export type { Country };
 
 export const useFetchCountries = () => {
   const [countryResults, setCountryResults] = useState<CountryResults>({

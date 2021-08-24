@@ -1,11 +1,5 @@
 import { UnexpectedError } from "errors";
-import { RequestResult } from "types";
-
-export interface Country {
-  name: string;
-  flag: string;
-  capital: string;
-}
+import { RequestResult, Country } from "types";
 
 export type CountryResults = RequestResult<Country[]>;
 
