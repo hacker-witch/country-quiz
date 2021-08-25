@@ -9,7 +9,7 @@ import { Flag } from "../Flag";
 
 const letters = ["a", "b", "c", "d"];
 
-interface QuizFormProps {
+interface QuestionPageProps {
   flag?: string;
   question: string;
   answerOptions: string[];
@@ -18,14 +18,14 @@ interface QuizFormProps {
   answerQuestion: () => void;
 }
 
-export const QuizForm = ({
+export const QuestionPage = ({
   flag,
   question,
   answerOptions,
   chosenAnswer,
   chooseAnswer,
   answerQuestion,
-}: QuizFormProps) => {
+}: QuestionPageProps) => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     answerQuestion();

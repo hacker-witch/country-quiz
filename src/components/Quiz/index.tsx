@@ -1,4 +1,4 @@
-import { QuizForm } from "../QuizForm";
+import { QuestionPage } from "../QuestionPage";
 import { QuestionResults } from "../QuestionResults";
 import { QuizResults } from "../QuizResults";
 import { Country } from "types";
@@ -25,7 +25,7 @@ export const Quiz = ({ countries }: QuizProps) => {
   switch (quizStatus) {
     case QuizStatus.Answering:
       return (
-        <QuizForm
+        <QuestionPage
           flag={currentQuestion.flag}
           question={currentQuestion.title}
           answerOptions={currentQuestion.answerOptions}
