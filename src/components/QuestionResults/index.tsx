@@ -4,7 +4,7 @@ import { QuestionTitle } from "../QuestionTitle";
 import { Button } from "../Button";
 import { AnswerOptionsGroup } from "../AnswerOptionsGroup";
 import { AnswerOptionItem } from "./AnswerOptionItem";
-import { Flag } from "../Flag";
+import { Flag as BaseFlag } from "../Flag";
 import { Question } from "types";
 
 const letters = ["a", "b", "c", "d"];
@@ -48,6 +48,10 @@ export const QuestionResults = ({
     </NextQuestionButton>
   </Page>
 );
+
+const Flag = styled(BaseFlag)`
+  margin-bottom: 1.75rem;
+`;
 
 const NextQuestionButton = styled(Button)`
   margin-top: 1.5rem;

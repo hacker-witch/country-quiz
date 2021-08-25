@@ -5,7 +5,7 @@ import { QuestionTitle } from "../QuestionTitle";
 import { AnswerOptionsGroup } from "../AnswerOptionsGroup";
 import { Button } from "../Button";
 import { AnswerOptionField } from "./AnswerOptionField";
-import { Flag } from "../Flag";
+import { Flag as BaseFlag } from "../Flag";
 
 const letters = ["a", "b", "c", "d"];
 
@@ -55,6 +55,10 @@ export const QuestionPage = ({
     </Page>
   );
 };
+
+const Flag = styled(BaseFlag)`
+  margin-bottom: 1.75rem;
+`;
 
 const Fieldset = styled.fieldset`
   border: none;
