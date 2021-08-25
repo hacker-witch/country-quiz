@@ -33,8 +33,8 @@ export const QuestionPage = ({
 
   return (
     <Page>
+      {flag ? <Flag src={flag} alt="" /> : null}
       <form onSubmit={handleSubmit}>
-        {flag ? <Flag src={flag} alt="" /> : null}
         <Fieldset>
           <QuestionTitle as="legend">{question}</QuestionTitle>
           <AnswerOptionsGroup>
