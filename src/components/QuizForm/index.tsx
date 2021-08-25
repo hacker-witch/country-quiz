@@ -1,5 +1,6 @@
 import { FormEvent } from "react";
 import styled from "styled-components";
+import { Page } from "../Page";
 import { QuestionTitle } from "../QuestionTitle";
 import { AnswerOptionsGroup } from "../AnswerOptionsGroup";
 import { Button } from "../Button";
@@ -31,25 +32,27 @@ export const QuizForm = ({
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      {flag ? <Flag src={flag} alt="" /> : null}
-      <Fieldset>
-        <QuestionTitle as="legend">{question}</QuestionTitle>
-        <AnswerOptionsGroup>
-          {answerOptions.map((option, index) => (
-            <AnswerOptionField
-              key={option}
-              letter={letters[index]}
-              value={option}
-              isChecked={option === chosenAnswer}
-              onChange={(_) => chooseAnswer(option)}
-            />
-          ))}
-        </AnswerOptionsGroup>
-      </Fieldset>
+    <Page>
+      <form onSubmit={handleSubmit}>
+        {flag ? <Flag src={flag} alt="" /> : null}
+        <Fieldset>
+          <QuestionTitle as="legend">{question}</QuestionTitle>
+          <AnswerOptionsGroup>
+            {answerOptions.map((option, index) => (
+              <AnswerOptionField
+                key={option}
+                letter={letters[index]}
+                value={option}
+                isChecked={option === chosenAnswer}
+                onChange={(_) => chooseAnswer(option)}
+              />
+            ))}
+          </AnswerOptionsGroup>
+        </Fieldset>
 
-      <SubmitAnswerButton type="submit">Submit</SubmitAnswerButton>
-    </form>
+        <SubmitAnswerButton type="submit">Submit</SubmitAnswerButton>
+      </form>
+    </Page>
   );
 };
 
