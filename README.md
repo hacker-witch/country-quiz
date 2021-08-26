@@ -1,3 +1,3 @@
 <p align="center">
-  <img src="country-quiz-presentation.gif" />
+  <img width="300" src="country-quiz-presentation.gif" />
 </p>
