@@ -16,3 +16,12 @@ If you answer the question correctly, the quiz continues, but if you answer it i
 ## Changes to the design
 
 - Altered the box-shadow to give more contrast between white flags and the background
+
+## How to run
+
+- Locally: npm start
+- Build for production: npm run build
+
+## How to deploy
+
+- npm run deploy
