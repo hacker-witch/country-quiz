@@ -3,7 +3,7 @@
   <img width="300" src="country-quiz-presentation.gif" />
 </div>
 
-# Overview
+## Overview
 
 This is an web app made with React based on design and user stories of the [Country Quiz challenge from devchallenges.io](https://devchallenges.io/challenges/Bu3G2irnaXmfwQ8sZkw8). The country list used to generate the questions is being fetched from [Rest Countries](https://restcountries.eu/).
 
