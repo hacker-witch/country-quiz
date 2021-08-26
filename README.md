@@ -12,3 +12,7 @@ When the quiz starts, a question will appear, the question can either ask for yo
 After selecting and submitting yout answer, the results for that question will appear and you can move to the next view by clicking next.
 
 If you answer the question correctly, the quiz continues, but if you answer it incorrectly the quiz ends, shows you your results for the whole quiz and offers you the opportunity to try again.
+
+## Changes to the design
+
+- Altered the box-shadow to give more contrast between white flags and the background
