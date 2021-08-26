@@ -3,7 +3,8 @@
   <img width="300" src="country-quiz-presentation.gif" />
 </div>
 
-<h1>Overview</h1>
+# Overview
+
 <p>This is an web app made with React based on design and user stories of the [Country Quiz challenge from devchallenges.io](https://devchallenges.io/challenges/Bu3G2irnaXmfwQ8sZkw8). The country list used to generate the questions is being fetched from [Rest Countries](https://restcountries.eu/).</p>
 
 <p>When the quiz starts, a question will appear, the question can either ask for you to pick the country to which the flag being displayed belongs to or the country to which the capital being displayed belongs to.</p>
