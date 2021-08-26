@@ -1,1 +1,1 @@
-![](country-quiz-presentation.gif)
+<img align="center" src="country-quiz-presentation.gif" />
