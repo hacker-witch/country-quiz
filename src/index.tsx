@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { createGlobalStyle } from "styled-components";
-import { App } from "./App";
+import App from "./App";
 import background from "img/background.png";
 import reportWebVitals from "./reportWebVitals";
 

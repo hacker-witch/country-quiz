@@ -1,7 +1,7 @@
 import { LoadingPage, ErrorPage, Quiz } from "components";
 import { useFetchCountries } from "hooks";
 
-export const App = () => {
+const App = () => {
   const { countryResults, RequestStatus } = useFetchCountries();
 
   switch (countryResults.status) {
@@ -15,3 +15,5 @@ export const App = () => {
       return <Quiz countries={countryResults.data} />;
   }
 };
+
+export default App;
