@@ -24,4 +24,4 @@ If you answer the question correctly, the quiz continues, but if you answer it i
 
 ## How to deploy
 
-- npm run deploy
+- npm run deploy (Linux only)
