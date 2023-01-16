@@ -3,7 +3,7 @@ import { RequestResult, Country } from "types";
 
 export type CountryResults = RequestResult<Country[]>;
 
-type Field = "name" | "flag" | "capital";
+type Field = "name" | "flags" | "capital";
 
 interface fetchAllCountriesOptions {
   fields: Field[];
@@ -22,8 +22,12 @@ export const fetchAllCountries = async ({
   }
 
   const countries = await response.json();
-  return countries;
+  return countries.map((country) => ({
+    ...country,
+    flag: country.flags.svg,
+    name: country.name.common,
+  }));
 };
 
 const addFieldsToUrl = (baseURL: string, fields: Field[]) =>
-  fields.reduce((url, field) => url + field + ";", `${baseURL}?fields=`);
+  fields.reduce((url, field) => url + field + ",", `${baseURL}?fields=`);

@@ -9,7 +9,7 @@ export const useFetchCountries = () => {
   });
 
   useEffect(() => {
-    fetchAllCountries({ fields: ["name", "capital", "flag"] })
+    fetchAllCountries({ fields: ["name", "capital", "flags"] })
       .then((countries) => {
         setCountryResults({ data: countries, status: RequestStatus.Complete });
       })
