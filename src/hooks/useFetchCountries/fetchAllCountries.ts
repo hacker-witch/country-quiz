@@ -9,7 +9,7 @@ interface fetchAllCountriesOptions {
   fields: Field[];
 }
 
-const apiRoot = "https://restcountries.eu/rest/v2";
+const apiRoot = "https://restcountries.com/v3.1";
 
 export const fetchAllCountries = async ({
   fields,
